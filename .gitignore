@@ -1,0 +1,16 @@
+# 构建产物可按需提交；如不希望提交，取消下一行注释
+# 题库.html
+
+# 本地私有数据
+data/*.private.json
+data/my-*.json
+
+# Python
+__pycache__/
+*.pyc
+
+# 编辑器
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

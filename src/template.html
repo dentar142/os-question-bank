@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__COURSE__ · 题库</title>
+<style>
+*{box-sizing:border-box}
+:root{
+  --f-d:"Inter Tight","Inter",-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;
+  --f-b:"Inter",-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;
+  --f-m:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  --r-card:16px;--r-opt:11px;--r-chip:8px;--r-btn:9px;--r-icon:8px;--r-badge:12px;
+  --m-out:140ms cubic-bezier(.4,0,1,1);
+  --m-in:200ms cubic-bezier(.16,1,.3,1);
+  --pig:url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI0LjEuMiwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzMiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAxMjggMTI4IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxMjggMTI4OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxwYXRoIHN0eWxlPSJmaWxsOiNGRkE4QTc7IiBkPSJNNzAuNTIsOTMuOThjMCwxLjUsMC40NCw1LjI2LDAuNDQsNi43NmMwLDEuNSwwLjk0LDQuNSw1LjAyLDQuOTNjNi4zMSwwLjY1LDcuODYtMi42NCw4LjU5LTYuNDgKCWMwLjk5LTUuMjEsMC40MS0xMS40LDAuNDEtMTEuNEw3MC41Miw5My45OHoiLz4KPHBhdGggc3R5bGU9ImZpbGw6I0ZGRDJCMTsiIGQ9Ik0xMTkuNzksMTkuNjVjMS43OC0wLjM4LDQuMTMsMC4xOSw0LjIyLTEuNmMwLjExLTIuMTYtMi42My0zLjU3LTUuOTEtMi42MwoJYy0zLjI3LDAuOTMtNC4zMiwzLjc1LTQuMzIsMy43NXMtMy43MS0xLjczLTYuOTUsMC44NGMtMy42NiwyLjkxLTMuOTQsOS4wMS0zLjk0LDkuMDFsNS4xNiw0Ljk3YzAsMCwwLjEzLTUuNzYsMC45NC03Ljg4CgljMS4wMy0yLjcyLDIuODItMi4yNSwyLjgyLTIuMjVzLTEuOTcsNS40NCwwLjc1LDguNzNjMy4yNiwzLjk0LDEwLjUxLDIuMjUsOS40OC00LjQxYy0wLjYxLTMuOTYtNC40MS02LjM4LTQuNDEtNi4zOAoJUzExOC40NSwxOS45MywxMTkuNzksMTkuNjV6IE0xMTcuMDcsMzAuODJjLTIuOTksMC4zNC0yLjA2LTQuODgtMS41LTYuMzhDMTE4LjAxLDI1LjQ3LDExOS41MSwzMC41MywxMTcuMDcsMzAuODJ6Ii8+CjxwYXRoIHN0eWxlPSJmaWxsOiNGRkQyQjE7IiBkPSJNNDUuOTcsMjQuODZjMTguMTktNy40LDU0LjA1LTkuMDgsNjYuMTcsMTAuMjhjMTIuMjUsMTkuNTcsMy44LDMyLjEsMi4zOSwzNS42MgoJYy0yLjAyLDUuMDUtMy44LDExLjU0LTQuMjIsMTQuOTJjLTAuNSwzLjk3LTEuMTMsMTQuMjItMS41NSwxNi4zM2MtMC40MiwyLjExLTQuMDgsNS4yMS03Ljg4LDQuOTNjLTMuOC0wLjI4LTYuOS0yLjY3LTcuMTgtNC45MwoJYy0wLjI4LTIuMjUsMC44NC03Ljg4LTEuODMtOS44NWMtMi42Ny0xLjk3LTEwLjctMC43LTE1LjQ5LDEuODNzLTI3LjQsMTQuMzItNTIuNjUsMy4yNEMtMS42MSw4Ni4xLDQuMyw2Mi4wMiwxMC41LDU0Ljk4CglzNS40OS04LjQ1LDUuNDktOC40NXMtNi4xOSwxLjU1LTMuOC0zLjM4czguNTktMTMuMDksOS43MS0xMy44YzEuMTMtMC43LDQuNzktMS44Myw2Ljc2LTAuNTZjMS45NywxLjI3LDEuOTcsMy4xLDEuOTcsMy4xCglTMzMuODcsMjkuNzgsNDUuOTcsMjQuODZ6Ii8+CjxwYXRoIHN0eWxlPSJmaWxsOiNGRkQyQjE7IiBkPSJNMjAuNzcsOTMuODRjMCwwLDAuMjgsOS44NSwwLjQyLDEyLjI1czAuNDcsNi4yOSwwLjg0LDguMTdjMC40MiwyLjExLDIuMTIsMy4zMiw1LjQ5LDMuNTIKCWM0LjY1LDAuMjgsNi45LTEuNjksNy4zMi0zLjM4YzAuNDItMS42OSwwLjg0LTE2Ljg5LDAuODQtMTYuODlMMjAuNzcsOTMuODR6Ii8+CjxwYXRoIHN0eWxlPSJmaWxsOiNGRkQyQjE7IiBkPSJNNDcuMSw5OC4yYzAsMC0wLjA0LDQuOTMsMC4xNCw5Ljg1YzAuMTQsMy44LDAuMTQsOC4xNywwLjU2LDkuMjljMC43LDEuODcsNC4wOCwyLjk2LDcuMDQsMy4xCgljMy4yNCwwLjE1LDUuNDItMS40OCw2Ljc2LTIuODJjMC43LTAuNywwLjctNC4yMiwwLjg0LTkuMjljMC4wOC0yLjk2LDAuMjgtMTEuNjgsMC4yOC0xMS42OEw0Ny4xLDk4LjJ6Ii8+CjxwYXRoIHN0eWxlPSJmaWxsOiNFNjUwOEY7IiBkPSJNNjIuODIsNDMuNThjLTAuNzUtMS42My00LjU4LDAtNS41NCwyLjQ0Yy0xLjIyLDMuMSwwLDYuMSwxLjc4LDkuNDhjMS4yMiwyLjMxLDYuNzYsOS40OCwxMy4xNCw3Ljk4CgljNy40Mi0xLjc1LDUuMzUtMTMuMzMsNS4wNy0xNC42NGMtMC4yOC0xLjMxLTEuMTctMy4wNi0yLjcyLTIuODJjLTEuNzgsMC4yOC0wLjkzLDMuMjQtMC44NCw1LjQ0YzAuMDksMi40NCwwLjE5LDYuNTctMi43Miw3LjIzCgljLTMuMTEsMC43LTUuMzEtMS4zNC03LjA0LTQuMTNjLTEuNjktMi43Mi0zLjY2LTQuNzktMy4xLTcuMzJDNjEuMiw0NS42OCw2My4zOCw0NC44LDYyLjgyLDQzLjU4eiIvPgo8cGF0aCBzdHlsZT0iZmlsbDojRTY1MDhGOyIgZD0iTTI0LjgxLDQwLjQ4Yy0xLjQyLTAuNTUtMy4xLDEuNi00LjY5LDIuOTFzLTQuNSwzLTUuNjMsMS42Yy0xLjE3LTEuNDcsMi41Mi01LjMyLDQuNjktOS4wMQoJYzEuODgtMy4xOSwzLjY0LTYuODUsNi4xLTcuMDRjMy42Ni0wLjI4LDAuODEtMS45Mi0xLjg4LTEuNDFjLTEuOTcsMC4zOC00LjY5LDIuMTYtNi4xOSw1LjE2UzguNTcsNDMuMywxMC45Miw0Ni43NwoJYzIuNyw0LDguNjMsMi4xNiwxMS4yNiwwQzI0LjgxLDQ0LjYxLDI2LjUsNDEuMTQsMjQuODEsNDAuNDh6Ii8+CjxwYXRoIHN0eWxlPSJmaWxsOiNGRjdEODY7IiBkPSJNMjkuNSw2OS4yYy01LjE2LTAuOTQtMTMuMzgsMC41LTEzLjk4LDYuMjljLTAuNDcsNC41LDIuNDQsOS45NSwxMS45MiwxMi4wMQoJYzkuNDgsMi4wNiwxNC4xNy0xLjUsMTQuNjQtNi41N0M0Mi41NSw3NS44NywzNy4yLDcwLjYxLDI5LjUsNjkuMnoiLz4KPHBhdGggc3R5bGU9ImZpbGw6IzJEMkQyQjsiIGQ9Ik0yNi4yMiw3Ny4yN2MwLjIsMi4yNy0wLjQyLDMuOTEtMS43OCw0LjA0Yy0xLjM2LDAuMTItMy4yNy0xLjQ4LTMuNDctMy43NQoJYy0wLjItMi4yNywwLjQtNC4xMywyLjE2LTQuMTNDMjQuNDksNzMuNDMsMjYuMDEsNzUsMjYuMjIsNzcuMjd6Ii8+CjxlbGxpcHNlIHRyYW5zZm9ybT0ibWF0cml4KDAuMDk0MSAtMC45OTU2IDAuOTk1NiAwLjA5NDEgLTQ5LjI5OTEgMTAzLjczOCkiIHN0eWxlPSJmaWxsOiMyRDJEMkI7IiBjeD0iMzIuMzUiIGN5PSI3OC45NiIgcng9IjMuOTQiIHJ5PSIyLjYyIi8+CjxlbGxpcHNlIHRyYW5zZm9ybT0ibWF0cml4KDAuMDk4NSAtMC45OTUxIDAuOTk1MSAwLjA5ODUgLTE4LjQ0NTkgMTEyLjEwODEpIiBzdHlsZT0iZmlsbDojMkQyRDJCOyIgY3g9IjUyLjY1IiBjeT0iNjYuMjMiIHJ4PSI0LjgzIiByeT0iNC4xIi8+CjxlbGxpcHNlIHRyYW5zZm9ybT0ibWF0cml4KDAuMDk4NSAtMC45OTUxIDAuOTk1MSAwLjA5ODUgLTM5LjMwNCA3Ni45OTYpIiBzdHlsZT0iZmlsbDojMkQyRDJCOyIgY3g9IjIyLjg0IiBjeT0iNjAuMTkiIHJ4PSI0Ljc4IiByeT0iNC4yMyIvPgo8L3N2Zz4K");
+}
+:root[data-theme=light]{
+  --bg:#FBFAF8;--card:#FFFFFF;--surface:#F2F1EC;--surface2:#E8E7E1;
+  --ink:#14161A;--ink2:#3C4148;--muted:#6E747C;--faint:#7E858D;
+  --border:#E1E1DA;--borderSoft:#EEEDE7;--solid:#14161A;--onSolid:#FFFFFF;
+  --ok:#0F6B46;--okTint:#EFF8F2;--okBorder:#B9DFC9;--onOk:#FFFFFF;
+  --bad:#A3231A;--badTint:#FDF3F1;--badBorder:#F0C7C0;--onBad:#FFFFFF;
+  --focus:#14161A;
+}
+:root[data-theme=dark]{
+  --bg:#16181C;--card:#1B1E23;--surface:#24272D;--surface2:#2C3037;
+  --ink:#E9EBED;--ink2:#BCC1C7;--muted:#8B9198;--faint:#858B93;
+  --border:#2E333A;--borderSoft:#24282E;--solid:#D8DBDF;--onSolid:#14161A;
+  --ok:#6FD8A6;--okTint:#12241B;--okBorder:#26503A;--onOk:#0B1D15;
+  --bad:#F29287;--badTint:#2A1817;--badBorder:#522723;--onBad:#2A1310;
+  --focus:#F1F2F4;
+}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-b);font-size:15.5px;line-height:1.5;
+  -webkit-font-smoothing:antialiased;transition:background var(--m-in),color var(--m-in)}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+button:focus-visible,.opt:focus-visible,input:focus-visible+ i .knob,label:focus-within{outline:2px solid var(--focus);outline-offset:2px}
+.flex{flex:1}
+.kbd{font-family:var(--f-m);font-size:10px;color:var(--faint);border:1px solid var(--border);border-radius:4px;
+  padding:1px 4px;line-height:1.3}
+
+/* ---------- 外壳 ---------- */
+.shell{display:flex;height:100dvh;overflow:hidden;padding-left:272px;
+  transition:padding-left 240ms cubic-bezier(.16,1,.3,1),padding-right 240ms cubic-bezier(.16,1,.3,1)}
+.shell.collapsed{padding-left:0}
+.shell.chat-open{padding-right:368px}
+.shell.collapsed .top{padding-left:84px}
+@media (max-width:1279px){.shell.chat-open{padding-right:0}}
+
+/* ---------- 侧栏 ---------- */
+.side{position:fixed;top:0;left:0;height:100dvh;width:272px;z-index:30;background:var(--bg);
+  padding:26px 20px 22px;border-right:1px solid var(--borderSoft);display:flex;flex-direction:column;
+  transition:width 240ms cubic-bezier(.16,1,.3,1),padding 240ms cubic-bezier(.16,1,.3,1);overflow:hidden}
+.side.collapsed{width:64px;padding:26px 15px}
+.side-top{display:flex;align-items:center;gap:10px;height:34px}
+.brand{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+.mark{width:30px;height:30px;border-radius:9px;background-color:var(--solid);background-image:var(--pig);
+  background-repeat:no-repeat;background-position:center;background-size:20px 20px;flex:none}
+.bname{font-size:13px;font-weight:600;line-height:1.2;white-space:nowrap}
+.bsub{font-size:10.5px;color:var(--muted);line-height:1.3;white-space:nowrap}
+.side.collapsed .brand,.side.collapsed .side-body,.side.collapsed .side-foot{display:none}
+.side.collapsed .side-top{justify-content:center}
+
+.side-body{flex:1;overflow:auto;margin-top:20px;padding-top:22px;border-top:1px solid var(--borderSoft)}
+.side-foot{margin-top:14px;padding-top:14px;border-top:1px solid var(--borderSoft)}
+.fhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.fhead span{font-size:10px;font-weight:500;letter-spacing:.08em;color:var(--muted)}
+.fhead button{font-size:11px;color:var(--faint)}
+.fhead button:hover{color:var(--ink2)}
+.grp{margin-bottom:18px}
+.ghead{display:flex;align-items:center;justify-content:space-between;height:16px;margin-bottom:8px}
+.ghead span{font-size:11.5px;font-weight:600;color:var(--ink2);letter-spacing:.02em}
+.ghead i{font-size:9.5px;color:var(--faint);font-style:normal}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{height:26px;padding:0 9px;border-radius:6px;background:var(--surface);color:var(--muted);
+  font-size:11.5px;display:inline-flex;align-items:center;gap:5px;transition:background var(--m-out),color var(--m-out)}
+.chip:hover{background:var(--surface2);color:var(--ink2)}
+.chip.on{background:var(--solid);color:var(--onSolid);font-weight:600}
+.chip .n{font-size:9.5px;opacity:.75;font-variant-numeric:tabular-nums}
+
+.crow{display:flex;align-items:center;gap:8px;height:30px;cursor:pointer;border-radius:6px}
+.crow:hover{background:var(--surface)}
+.crow input{position:absolute;opacity:0;width:0;height:0}
+.cbox{width:15px;height:15px;border-radius:4px;border:1px solid var(--border);background:var(--card);flex:none;
+  display:flex;align-items:center;justify-content:center;transition:background var(--m-out),border-color var(--m-out)}
+.crow input:checked + .cbox{background:var(--solid);border-color:var(--solid)}
+.crow input:checked + .cbox::after{content:"";width:7px;height:4px;border-left:1.5px solid var(--onSolid);
+  border-bottom:1.5px solid var(--onSolid);transform:rotate(-45deg) translate(1px,-1px)}
+.ci{font-size:10px;color:var(--faint);font-variant-numeric:tabular-nums;width:14px}
+.cn{font-size:12.5px;color:var(--ink2);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cc{font-size:9.5px;color:var(--faint);font-variant-numeric:tabular-nums}
+
+.sw{display:flex;align-items:center;gap:8px;height:20px;margin-bottom:12px;cursor:pointer}
+.sw span{font-size:12px;color:var(--ink2);flex:1}
+.sw input{position:absolute;opacity:0;width:0;height:0}
+.track{width:34px;height:20px;border-radius:10px;background:var(--surface2);position:relative;flex:none;
+  transition:background var(--m-out)}
+.knob{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:8px;background:var(--knob,#fff);
+  box-shadow:0 1px 2px rgba(0,0,0,.18);transition:transform var(--m-out)}
+.sw input:checked + .track{background:var(--solid)}
+.sw input:checked + .track .knob{transform:translateX(14px);background:var(--onSolid)}
+:root[data-theme=dark] .knob{background:#C5C9CF}
+:root[data-theme=dark] .sw input:checked + .track .knob{background:#14161A}
+
+.today{display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:6px}
+.today b{font-size:9.5px;font-weight:500;color:var(--faint);font-variant-numeric:tabular-nums}
+.rail{height:3px;background:var(--border);border-radius:0;overflow:hidden}
+.rail i{display:block;height:100%;background:var(--ink);width:0;transition:width 320ms linear}
+.stats3{display:flex;margin-top:14px}
+.stats3 div{flex:1;text-align:center;border-left:1px solid var(--borderSoft)}
+.stats3 div:first-child{border-left:0}
+.stats3 b{display:block;font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}
+.stats3 span{font-size:10px;color:var(--muted)}
+.hint{margin-top:14px;display:flex;align-items:center;gap:4px;font-size:10px;color:var(--faint)}
+
+/* ---------- 主区 ---------- */
+.main{flex:1;display:flex;flex-direction:column;min-width:0;position:relative}
+.top{height:70px;flex:none;display:flex;align-items:center;gap:12px;padding:0 40px;
+  transition:padding-left 240ms cubic-bezier(.16,1,.3,1)}
+.counter{font-size:10.5px;letter-spacing:.06em;color:var(--faint);font-variant-numeric:tabular-nums}
+.vline{width:1px;height:11px;background:var(--border)}
+.path{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.keys{font-size:10px;color:var(--faint);white-space:nowrap}
+.iconbtn{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  color:var(--muted);transition:background var(--m-out),color var(--m-out)}
+.iconbtn:hover{background:var(--surface);color:var(--ink2)}
+.stage{flex:1;display:flex;align-items:center;justify-content:center;padding:0 40px;overflow:auto}
+.col{width:760px;max-width:100%}
+
+/* ---------- 题卡 ---------- */
+.card{padding:0;transition:opacity var(--m-out)}
+.meta{display:flex;align-items:center;gap:10px;height:16px;margin-bottom:26px}
+.meta .kind{font-size:10px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.meta .sep{width:1px;height:10px;background:var(--border)}
+.meta .src{font-size:11.5px;color:var(--faint)}
+.meta .src.pred{color:var(--bad)}
+.star{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--muted)}
+.star:hover{color:var(--ink2)}
+.star.on{color:var(--ink)}
+.stem{margin:0 0 30px;font-family:var(--f-d);font-size:28px;line-height:1.45;letter-spacing:-.2px;font-weight:600;color:var(--ink)}
+.stem.hide{display:none}
+.stemzh{margin:-18px 0 30px;font-size:15.5px;line-height:1.6;color:var(--muted)}
+.stemzh.hide{display:none}
+
+.opts{display:flex;flex-direction:column;gap:10px;margin-bottom:34px}
+.opt{display:flex;align-items:flex-start;gap:12px;padding:13px 15px;border-radius:var(--r-opt);
+  background:var(--card);border:1px solid var(--border);text-align:left;width:100%;
+  transition:background var(--m-out),border-color var(--m-out),opacity var(--m-out)}
+.opt:hover{background:var(--surface);border-color:var(--border)}
+.badge{width:24px;height:24px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-m);font-size:11.5px;color:var(--ink2);background:var(--surface);
+  transition:background var(--m-out),color var(--m-out)}
+.otext{flex:1;font-size:15.5px;line-height:1.5;color:var(--ink2)}
+.ozh{display:block;font-size:13px;line-height:1.5;color:var(--muted);margin-top:3px}
+.tail{width:12px;flex:none;text-align:center;font-size:12px;color:var(--muted)}
+.opt.sel{background:var(--surface);border-color:var(--border)}
+.opt.sel .badge{background:var(--solid);color:var(--onSolid)}
+.opt.ok{background:var(--okTint);border-color:var(--okBorder)}
+.opt.ok .badge{background:var(--ok);color:var(--onOk)}
+.opt.ok .tail{color:var(--ok)}
+.opt.bad{background:var(--badTint);border-color:var(--badBorder)}
+.opt.bad .badge{background:var(--bad);color:var(--onBad)}
+.opt.bad .tail{color:var(--bad)}
+.opt.reveal{opacity:.55}
+.opt[disabled]{cursor:default}
+
+.fbwrap{min-height:78px;margin-bottom:8px}
+.fb{border-radius:var(--r-opt);border:1px solid transparent;padding:13px 15px;opacity:0;transform:translateY(8px)}
+.fb.show{animation:fbin var(--m-in) forwards}
+@keyframes fbin{to{opacity:1;transform:translateY(0)}}
+.fb.ok{background:var(--okTint);border-color:var(--okBorder)}
+.fb.bad{background:var(--badTint);border-color:var(--badBorder)}
+.fbt{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.fbt b{font-size:13.5px;font-weight:700}
+.fb.ok .fbt b{color:var(--ok)}
+.fb.bad .fbt b{color:var(--bad)}
+.fbt span{font-size:13px;font-weight:500;color:var(--ink2)}
+.fb p{margin:0;font-size:13.5px;line-height:1.62;color:var(--ink2)}
+
+.act{display:flex;align-items:center;gap:10px}
+.ghost{height:34px;padding:0 16px;border-radius:var(--r-btn);background:var(--card);border:1px solid var(--border);
+  font-size:13px;color:var(--ink2);transition:background var(--m-out)}
+.ghost:hover{background:var(--surface)}
+.primary{height:36px;padding:0 20px;border-radius:var(--r-btn);background:var(--solid);color:var(--onSolid);
+  font-size:13px;font-weight:600;transition:opacity var(--m-out)}
+.primary:hover{opacity:.88}
+.primary[disabled]{opacity:.35;cursor:not-allowed}
+
+.rail.bottom{height:3px;flex:none}
+
+
+/* ---------- 右侧聊天 ---------- */
+#chat{
+  position:fixed;top:0;right:0;height:100dvh;width:368px;z-index:40;display:flex;flex-direction:column;
+  background:var(--bg);border-left:1px solid var(--border);
+  transform:translateX(100%);transition:transform 220ms cubic-bezier(.16,1,.3,1);
+}
+#chat.open{transform:none}
+.ch-head{height:54px;flex:none;display:flex;align-items:center;gap:8px;padding:0 12px 0 16px;border-bottom:1px solid var(--borderSoft)}
+.ch-title{flex:1;font-size:12.5px;font-weight:600;letter-spacing:.02em}
+.ch-title i{font-style:normal;font-size:10px;color:var(--faint);margin-left:6px;font-weight:400}
+.ch-list{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+.msg{max-width:100%;font-size:13px;line-height:1.62;white-space:pre-wrap;word-break:break-word}
+.msg .b{border-radius:10px;padding:10px 12px}
+.msg.ai .b{background:var(--surface);color:var(--ink2);border:1px solid var(--borderSoft)}
+.msg.me{align-self:flex-end}
+.msg.me .b{background:var(--solid);color:var(--onSolid)}
+.msg .who{font-size:10px;color:var(--faint);margin-bottom:4px;letter-spacing:.06em}
+.msg.err .b{background:var(--badTint);border-color:var(--badBorder);color:var(--bad)}
+.ch-empty{color:var(--faint);font-size:12px;text-align:center;margin-top:40px;line-height:1.9}
+.ch-empty b{display:block;color:var(--muted);font-weight:600;margin-bottom:6px;font-size:12.5px}
+.ch-set{display:none;padding:12px 16px;border-bottom:1px solid var(--borderSoft);background:var(--surface)}
+.ch-set.open{display:block}
+.ch-set label{display:block;font-size:10.5px;color:var(--muted);margin:8px 0 4px;letter-spacing:.04em}
+.ch-set input{width:100%;height:30px;padding:0 9px;border-radius:7px;border:1px solid var(--border);
+  background:var(--card);color:var(--ink);font:inherit;font-size:12px;outline:none}
+.ch-set input:focus{border-color:var(--accent)}
+.ch-set select{width:100%;height:30px;padding:0 8px;border-radius:7px;border:1px solid var(--border);
+  background:var(--card);color:var(--ink);font:inherit;font-size:12px;outline:none}
+.ch-set select:focus{border-color:var(--accent)}
+.ch-set .row{display:flex;gap:8px;margin-top:10px;align-items:center}
+.ch-set .row button{height:28px;padding:0 12px;border-radius:7px;border:1px solid var(--border);font-size:12px;color:var(--ink2)}
+.ch-set .row button.p{background:var(--solid);color:var(--onSolid);border-color:var(--solid)}
+.ch-set .note{font-size:10.5px;color:var(--faint);margin-top:8px;line-height:1.5}
+.ch-foot{flex:none;border-top:1px solid var(--borderSoft);padding:10px 12px 12px}
+.ch-in{display:flex;gap:8px;align-items:flex-end}
+.ch-in textarea{flex:1;min-height:38px;max-height:120px;resize:none;padding:9px 11px;border-radius:9px;
+  border:1px solid var(--border);background:var(--card);color:var(--ink);font:inherit;font-size:13px;
+  line-height:1.5;outline:none}
+.ch-in textarea:focus{border-color:var(--accent)}
+.ch-in button{width:38px;height:38px;border-radius:9px;background:var(--solid);color:var(--onSolid);
+  display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+.ch-in button[disabled]{opacity:.4}
+.ch-hint{font-size:10px;color:var(--faint);margin-top:6px;letter-spacing:.02em}
+@media (max-width:767px){#chat{width:100%}}
+@media (max-width:1023px){.shell{padding-left:0!important;padding-right:0!important}}
+
+
+.msg{white-space:normal}
+.msg.me .b{white-space:pre-wrap}
+.msg .b p{margin:0 0 8px}
+.msg .b p:last-child{margin-bottom:0}
+.msg .b strong{font-weight:700;color:var(--ink)}
+.msg .b em{font-style:italic}
+.msg .b code{font-family:var(--f-m);font-size:12px;background:var(--surface2);
+  padding:1px 5px;border-radius:4px}
+.msg .b pre{margin:8px 0;padding:10px 12px;background:var(--surface2);border-radius:8px;overflow:auto}
+.msg .b pre code{background:none;padding:0;font-size:11.5px;line-height:1.55}
+.msg .b ul,.msg .b ol{margin:6px 0;padding-left:20px}
+.msg .b li{margin:3px 0}
+.msg .b blockquote{margin:6px 0;padding-left:10px;border-left:2px solid var(--border);color:var(--muted)}
+.msg .b h3,.msg .b h4,.msg .b h5{margin:10px 0 6px;font-size:13.5px;font-weight:700;line-height:1.4}
+.msg .b a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
+.msg .b hr{border:0;border-top:1px solid var(--border);margin:10px 0}
+.msg .b .tw{overflow-x:auto;margin:8px 0}
+.msg .b table{border-collapse:collapse;width:100%;font-size:12.5px;line-height:1.5}
+.msg .b th,.msg .b td{border:1px solid var(--border);padding:5px 8px;text-align:left;vertical-align:top}
+.msg .b th{background:var(--surface2);font-weight:600;white-space:nowrap}
+.msg .b tbody tr:nth-child(even) td{background:rgba(128,128,128,.05)}
+
+/* ---------- 空态 ---------- */
+.empty{display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 0}
+.ebadge{width:44px;height:44px;border-radius:22px;background:var(--surface);display:flex;align-items:center;justify-content:center}
+.ebadge .pig{width:26px;height:26px;display:block;background-image:var(--pig);background-repeat:no-repeat;
+  background-position:center;background-size:contain}
+.empty h3{margin:16px 0 6px;font-size:17px;font-weight:600}
+.empty p{margin:0 0 18px;font-size:13.5px;color:var(--muted);max-width:34em}
+
+/* ---------- 移动工具条（默认隐藏） ---------- */
+.toolbar{display:none}
+
+/* ---------- 菜单 ---------- */
+.menu{position:absolute;top:56px;right:36px;background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:6px;min-width:150px;box-shadow:0 8px 24px rgba(0,0,0,.10);display:none;z-index:20}
+.menu.open{display:block}
+.menu button{display:block;width:100%;text-align:left;padding:8px 10px;border-radius:6px;font-size:12.5px;color:var(--ink2)}
+.menu button:hover{background:var(--surface)}
+
+/* ---------- 题卡模式 768–1023 ---------- */
+@media (max-width:1023px){
+  .side{display:none}
+  .shell{display:block;height:auto;min-height:100dvh}
+  .main{height:auto;display:block}
+  .top{height:auto;padding:34px 32px 22px;flex-wrap:wrap;gap:14px}
+  .counter{display:none}
+  .vline{display:none}
+  .keys{display:none}
+  .path{font-size:11px;font-weight:500;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
+  .stage{padding:0 32px}
+  .col{width:880px;margin:0 auto}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-card);padding:24px 36px 26px}
+  .stem{font-size:21px;line-height:1.52;margin-bottom:22px}
+  .stemzh{font-size:13.5px;margin:-10px 0 22px}
+  .opt{padding:11px 13px;min-height:47px}
+  .otext{font-size:15.5px}
+  .rail.bottom{position:fixed;top:0;left:0;right:0}
+  .toolbar{display:flex;flex-wrap:wrap;gap:8px;padding:0 32px 14px;align-items:center}
+}
+
+/* ---------- 移动 <768 ---------- */
+@media (max-width:767px){
+  body{font-size:14px}
+  .top{padding:18px 20px 14px;gap:10px}
+  .path{font-size:10px;letter-spacing:.12em}
+  .stage{padding:0 20px}
+  .card{padding:16px;border-radius:14px}
+  .meta{margin-bottom:15px}
+  .stem{font-size:17.5px;line-height:1.5;margin-bottom:18px}
+  .stemzh{font-size:14px;margin:-8px 0 18px}
+  .opts{gap:7px;margin-bottom:22px}
+  .opt{min-height:62px;padding:10px 11px;border-radius:10px;gap:10px}
+  .badge{width:23px;height:23px;border-radius:11.5px}
+  .otext{font-size:14px;line-height:1.48}
+  .ozh{font-size:12.5px}
+  .fbwrap{min-height:0}
+  .act .ghost{width:79px;padding:0}
+  .primary{flex:1}
+  .toolbar{padding:0 20px 12px}
+  .chip{height:26px;font-size:11.5px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition-duration:120ms !important;animation-duration:120ms !important}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="side" id="side">
+    <div class="side-top">
+      <div class="brand">
+        <span class="mark"></span>
+        <span><span class="bname">__COURSE__</span><br><span class="bsub">期末复习</span></span>
+      </div>
+      <button class="iconbtn" id="btnCollapse" aria-label="收起侧栏" title="收起侧栏 (Ctrl + .)">‹</button>
+    </div>
+
+    <div class="side-body">
+      <div class="fhead"><span>筛选</span><button id="btnReset">重置</button></div>
+
+      <div class="grp">
+        <div class="ghead"><span>来源</span><i id="cntSrc"></i></div>
+        <div class="chips" id="gSrc"></div>
+      </div>
+
+      <div class="grp">
+        <div class="ghead"><span>章节</span><i>可多选</i></div>
+        <div id="gCh"></div>
+      </div>
+
+      <div class="grp">
+        <div class="ghead"><span>题型</span><i id="cntKind"></i></div>
+        <div class="chips" id="gKind"></div>
+      </div>
+
+      <div class="grp">
+        <div class="ghead"><span>选项</span><i>Q W E R</i></div>
+        <label class="sw"><span>只看错题</span><input type="checkbox" id="swWrong"><i class="track"><b class="knob"></b></i></label>
+        <label class="sw"><span>中英对照</span><input type="checkbox" id="swBi" checked><i class="track"><b class="knob"></b></i></label>
+        <label class="sw"><span>随机顺序</span><input type="checkbox" id="swRandom"><i class="track"><b class="knob"></b></i></label>
+        <label class="sw"><span>答对自动下一题</span><input type="checkbox" id="swAuto"><i class="track"><b class="knob"></b></i></label>
+      </div>
+    </div>
+
+    <div class="side-foot">
+      <div class="today"><span>今日练习</span><b id="todayN"></b></div>
+      <div class="rail"><i id="railSide"></i></div>
+      <div class="stats3">
+        <div><b id="stDone">0</b><span>已答</span></div>
+        <div><b id="stRate">--</b><span>正确率</span></div>
+        <div><b id="stWrong">0</b><span>错题</span></div>
+      </div>
+      <div class="hint"><span class="kbd">Ctrl</span><span class="kbd">,</span> 收起侧栏　<span class="kbd">Ctrl</span><span class="kbd">.</span> 助手</div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="top">
+      <span class="counter" id="counter"></span>
+      <span class="vline"></span>
+      <span class="path" id="path">第 1 章 · 判断题</span>
+      <span class="flex"></span>
+      <span class="keys">1–9 选择 · Enter 提交 · ← → 翻页 · Q 中英 · W 随机 · E 错题 · R 收藏 · Ctrl+/ 问 AI</span>
+      <button class="iconbtn" id="btnTheme" aria-label="切换主题">☾</button>
+      <button class="iconbtn" id="btnMore" aria-label="更多">⋯</button>
+      <div class="menu" id="menu">
+        <button id="miExport">导出进度</button>
+        <button id="miImport">导入进度</button>
+        <button id="miClear">清空作答记录</button>
+        <button id="miReset">重置筛选</button>
+        <input type="file" id="miFile" accept="application/json,.json" style="display:none">
+      </div>
+    </header>
+
+    <div class="toolbar" id="toolbar"></div>
+
+    <main class="stage"><div class="col" id="col"></div></main>
+    <div class="rail bottom"><i id="railMain"></i></div>
+  </div>
+</div>
+
+<aside id="chat">
+  <div class="ch-head">
+    <span class="ch-title">学习助手<i>LLM</i></span>
+    <button class="iconbtn" id="chSet" aria-label="设置">⚙</button>
+    <button class="iconbtn" id="chClose" aria-label="关闭">×</button>
+  </div>
+
+  <div class="ch-set" id="chSetBox">
+    <label>API 地址</label>
+    <input id="cfBase" spellcheck="false" placeholder="http://127.0.0.1:3425/v1">
+    <label>API Key</label>
+    <input id="cfKey" spellcheck="false" placeholder="magpie">
+    <label>模型</label>
+    <input id="cfModel" spellcheck="false" placeholder="workbuddy/deepseek-v4.1-flash">
+    <label>思考深度（reasoning_effort）</label>
+    <select id="cfEffort">
+      <option value="low">low · 快</option>
+      <option value="high">high · 深</option>
+      <option value="">不传</option>
+    </select>
+    <div class="row">
+      <button class="p" id="cfSave">保存</button>
+      <button id="cfClear">清空对话</button>
+    </div>
+    <div class="note" id="cfNote">本地网关默认 http://127.0.0.1:3425/v1</div>
+  </div>
+
+  <div class="ch-list" id="chList"></div>
+
+  <div class="ch-foot">
+    <div class="ch-in">
+      <textarea id="chInput" rows="1" placeholder="问点什么…  Ctrl+/ 插入当前题目"></textarea>
+      <button id="chSend" aria-label="发送">↑</button>
+    </div>
+    <div class="ch-hint">Enter 发送 · Shift+Enter 换行 · Ctrl+. 收起</div>
+  </div>
+</aside>
+
+<script>
+var RAW = __QUESTIONS__;
+
+var META = __META__;
+var KIND_DEF = META.kinds;
+var LABEL2KEY = {};
+for(var _i = 0; _i < KIND_DEF.length; _i++){ LABEL2KEY[KIND_DEF[_i].label] = KIND_DEF[_i].key; }
+function toType(k){ return LABEL2KEY[k] || 'other'; }
+var Q = RAW.map(function(r){
+  return {
+    id: r.id, src: r.src, ch: r.ch, kind: r.kind, type: toType(r.kind),
+    stem: r.q, stemZh: r.qzh || '',
+    options: (r.opts || []).map(function(o){ return { key:o[0], text:o[1], textZh:o[2] || '' }; }),
+    answer: r.answer || r.ans || [], why: r.why || ''
+  };
+});
+var TOTAL = Q.length;
+var DIGITS = Math.max(1, String(TOTAL).length);
+var CHAPTERS = (function(){
+  var seen = {}, out = [];
+  for(var i = 0; i < Q.length; i++){
+    var id = Q[i].ch;
+    if(seen[id]) continue;
+    seen[id] = 1;
+    var label = '';
+    for(var j = 0; j < META.chapters.length; j++){
+      if(String(META.chapters[j].id) === String(id)) label = META.chapters[j].name;
+    }
+    out.push({ id: id, name: label || ('第 ' + id + ' 章') });
+  }
+  out.sort(function(a, b){
+    var x = Number(a.id), y = Number(b.id);
+    if(isNaN(x) || isNaN(y)) return String(a.id).localeCompare(String(b.id));
+    return x - y;
+  });
+  return out;
+})();
+var CHNAME = {};
+for(var _c = 0; _c < CHAPTERS.length; _c++){ CHNAME[CHAPTERS[_c].id] = CHAPTERS[_c].name; }
+var KIND_LIST = (function(){
+  var out = [];
+  for(var i = 0; i < KIND_DEF.length; i++){
+    if(countBy(function(q){ return q.type === KIND_DEF[i].key; }) > 0) out.push(KIND_DEF[i]);
+  }
+  return out;
+})();
+var SRC_LIST = META.sources;
+var PK = 'osqb.progress.v1';
+
+var S = {
+  answered:{}, starred:{}, ch:[], src:'all', kind:'all',
+  onlyWrong:false, bi:true, random:false, autoNext:false,
+  idx:0, queue:[], pending:[]
+};
+
+/* ---------- 持久化 ---------- */
+var saveTimer = null;
+function save(now){
+  if(saveTimer) clearTimeout(saveTimer);
+  var write = function(){
+    var p = { version:1, answered:S.answered, starred:S.starred,
+      filters:{ src:S.src, ch:S.ch.slice(), kind:S.kind },
+      flags:{ onlyWrong:S.onlyWrong, bi:S.bi, random:S.random, autoNext:S.autoNext },
+      theme: document.documentElement.getAttribute('data-theme'),
+      lastIndex: S.idx };
+    try{ localStorage.setItem(PK, JSON.stringify(p)); }catch(e){}
+  };
+  if(now) write(); else saveTimer = setTimeout(write, 300);
+}
+function load(){
+  var p = null;
+  try{ p = JSON.parse(localStorage.getItem(PK) || 'null'); }catch(e){}
+  if(!p){
+    var old = null;
+    try{ old = JSON.parse(localStorage.getItem('os_bank_v2') || 'null'); }catch(e){}
+    if(old && old.answered){
+      for(var k in old.answered){
+        var a = old.answered[k];
+        S.answered[k] = { picked:a.picked || [], correct: !!a.ok, at: Date.now() };
+      }
+      for(var w in (old.wrong || {})){ if(!S.answered[w]) S.answered[w] = { picked:[], correct:false, at:Date.now() }; }
+    }
+    try{ S.bi = localStorage.getItem('os_bi') !== '0'; }catch(e){}
+    return;
+  }
+  S.answered = p.answered || {};
+  S.starred = p.starred || {};
+  if(p.filters){ S.src = p.filters.src || 'all'; S.ch = p.filters.ch || []; S.kind = p.filters.kind || 'all'; }
+  if(p.flags){ S.onlyWrong = !!p.flags.onlyWrong; S.bi = p.flags.bi !== false; S.random = !!p.flags.random; S.autoNext = !!p.flags.autoNext; }
+  S.idx = p.lastIndex || 0;
+}
+
+/* ---------- 队列 ---------- */
+function shuffle(a){
+  for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
+  return a;
+}
+function buildQueue(keep){
+  var out = [];
+  for(var i=0;i<Q.length;i++){
+    var q = Q[i];
+    if(S.src !== 'all' && q.src !== S.src) continue;
+    if(S.ch.length && S.ch.indexOf(String(q.ch)) < 0) continue;
+    if(S.kind !== 'all' && q.type !== S.kind) continue;
+    if(S.onlyWrong && !(S.answered[q.id] && !S.answered[q.id].correct)) continue;
+    out.push(q);
+  }
+  if(S.random) out = shuffle(out);
+  S.queue = out;
+  S.pending = [];
+  if(!keep) S.idx = 0;
+  if(S.idx >= S.queue.length) S.idx = Math.max(0, S.queue.length - 1);
+}
+function cur(){ return S.queue[S.idx] || null; }
+
+/* ---------- 统计 ---------- */
+function dayKey(ts){
+  var d = ts ? new Date(ts) : null;
+  if(!d || isNaN(d.getTime())) return '';
+  return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+}
+function statsNow(){
+  var done=0, right=0, wrong=0, today=0;
+  var tk = dayKey(Date.now());
+  for(var k in S.answered){
+    var a = S.answered[k];
+    done++;
+    if(a.correct) right++; else wrong++;
+    if(dayKey(a.at) === tk) today++;
+  }
+  return { done:done, right:right, wrong:wrong, today:today,
+           rate: done ? Math.round(right*100/done) : 0 };
+}
+function padNum(n, width){ var t = String(n); while(t.length < width) t = '0' + t; return t; }
+function padIndex(n){ return padNum(n, Math.max(2, String(CHAPTERS.length).length)); }
+
+/* ---------- 渲染：筛选 ---------- */
+function countBy(fn){ var n=0; for(var i=0;i<Q.length;i++) if(fn(Q[i])) n++; return n; }
+
+function renderFilters(){
+  var gs = document.getElementById('gSrc');
+  var srcOpts = [['all', '全部']];
+  for(var si = 0; si < SRC_LIST.length; si++){ srcOpts.push([SRC_LIST[si].key, SRC_LIST[si].label]); }
+  gs.innerHTML = '';
+  srcOpts.forEach(function(p){
+    var n = p[0] === 'all' ? Q.length : countBy(function(q){ return q.src === p[0]; });
+    var b = document.createElement('button');
+    b.className = 'chip' + (S.src === p[0] ? ' on' : '');
+    b.innerHTML = p[1] + '<span class="n">' + n + '</span>';
+    b.onclick = function(){ S.src = p[0]; buildQueue(false); save(); render(); };
+    gs.appendChild(b);
+  });
+
+  var gk = document.getElementById('gKind');
+  var kindOpts = [['all', '全部']];
+  for(var ki = 0; ki < KIND_LIST.length; ki++){ kindOpts.push([KIND_LIST[ki].key, KIND_LIST[ki].short || KIND_LIST[ki].label]); }
+  gk.innerHTML = '';
+  kindOpts.forEach(function(p){
+    var n = p[0] === 'all' ? Q.length : countBy(function(q){ return q.type === p[0]; });
+    var b = document.createElement('button');
+    b.className = 'chip' + (S.kind === p[0] ? ' on' : '');
+    b.innerHTML = p[1] + '<span class="n">' + n + '</span>';
+    b.onclick = function(){ S.kind = p[0]; buildQueue(false); save(); render(); };
+    gk.appendChild(b);
+  });
+
+  var gc = document.getElementById('gCh');
+  gc.innerHTML = '';
+  CHAPTERS.forEach(function(cp){
+    var c = cp.id;
+    var n = countBy(function(q){ return String(q.ch) === String(c); });
+    var lab = document.createElement('label');
+    lab.className = 'crow';
+    var on = S.ch.indexOf(String(c)) >= 0;
+    lab.innerHTML = '<input type="checkbox" data-ch="' + c + '"' + (on ? ' checked' : '') +
+      '><i class="cbox"></i><span class="ci">' + padIndex(CHAPTERS.indexOf(cp) + 1) + '</span><span class="cn">' + cp.name +
+      '</span><span class="cc">' + n + '</span>';
+    lab.querySelector('input').onchange = function(e){
+      var v = String(c), k = S.ch.indexOf(v);
+      if(e.target.checked){ if(k < 0) S.ch.push(v); } else if(k >= 0){ S.ch.splice(k,1); }
+      buildQueue(false); save(); render();
+    };
+    gc.appendChild(lab);
+  });
+}
+
+function renderToolbar(){
+  var tb = document.getElementById('toolbar');
+  if(!tb) return;
+  tb.innerHTML = '';
+  var mk = function(label, on, fn){
+    var b = document.createElement('button');
+    b.className = 'chip' + (on ? ' on' : '');
+    b.textContent = label;
+    b.onclick = fn;
+    tb.appendChild(b);
+  };
+  mk('全部', S.src === 'all' && !S.ch.length && S.kind === 'all', function(){
+    S.src='all'; S.ch=[]; S.kind='all'; buildQueue(false); save(); render();
+  });
+  mk('真题', S.src === 'real', function(){ S.src='real'; buildQueue(false); save(); render(); });
+  mk('预测', S.src === 'pred', function(){ S.src='pred'; buildQueue(false); save(); render(); });
+  mk('只看错题', S.onlyWrong, function(){ S.onlyWrong=!S.onlyWrong; buildQueue(false); save(); render(); });
+  mk('中英', S.bi, function(){ S.bi=!S.bi; save(); render(); });
+}
+
+/* ---------- 渲染：题卡 ---------- */
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function render(){
+  renderFilters();
+  renderToolbar();
+
+  var col = document.getElementById('col');
+  var q = cur();
+  var st = statsNow();
+
+  document.getElementById('counter').textContent = q
+    ? (padNum(S.idx + 1, DIGITS) + ' / ' + S.queue.length)
+    : padNum(0, DIGITS) + ' / 0';
+  document.getElementById('stDone').textContent = st.done;
+  document.getElementById('stRate').textContent = st.done ? st.rate + '%' : '--';
+  document.getElementById('stWrong').textContent = st.wrong;
+  var pctSide = Math.min(100, Math.round(st.done / TOTAL * 100));
+  document.getElementById('railSide').style.width = pctSide + '%';
+  document.getElementById('railMain').style.width = pctSide + '%';
+  document.getElementById('todayN').textContent = Math.min(st.today, META.dailyGoal) + ' / ' + META.dailyGoal;
+
+  if(!q){
+    col.innerHTML = '<div class="empty"><div class="ebadge"><i class="pig"></i></div>' +
+      '<h3>' + (S.onlyWrong ? '错题已经清空了' : '这组筛选下没有题目了') + '</h3>' +
+      '<p>' + (S.onlyWrong ? '换个条件继续，或者把筛选项重置。' : '当前筛选组合下没有匹配的题，试试放宽条件。') + '</p>' +
+      '<button class="ghost" id="btnEmpty">重置筛选</button></div>';
+    var be = document.getElementById('btnEmpty');
+    if(be) be.onclick = function(){ doReset(); };
+    document.getElementById('path').textContent = '空';
+    return;
+  }
+
+  var rec = S.answered[q.id];
+  var answered = !!rec;
+  var showZh = S.bi;
+
+  document.getElementById('path').textContent = '第 ' + q.ch + ' 章 ' + (CHNAME[q.ch] || '') + ' · ' + q.kind;
+
+  var html = '';
+  html += '<div class="card">';
+  html += '<div class="meta"><span class="kind">' + q.kind + '</span><span class="sep"></span>' +
+          '<span class="src ' + (q.src === 'pred' ? 'pred' : '') + '">' + (q.src === 'pred' ? '预测题' : '真题') + '</span>' +
+          '<span class="flex"></span>' +
+          '<button class="star' + (S.starred[q.id] ? ' on' : '') + '" id="btnStar">' +
+          (S.starred[q.id] ? '★' : '☆') + '<span>收藏</span></button></div>';
+
+  html += '<h2 class="stem">' + esc(q.stem) + '</h2>';
+  if(showZh && q.stemZh) html += '<p class="stemzh">' + esc(q.stemZh) + '</p>';
+
+  html += '<div class="opts">';
+  for(var i=0;i<q.options.length;i++){
+    var o = q.options[i];
+    var cls = 'opt';
+    var tail = '';
+    if(answered){
+      var hit = q.answer.indexOf(o.key) >= 0;
+      var mine = (rec.picked || []).indexOf(o.key) >= 0;
+      if(hit){ cls += ' ok'; tail = '✓'; }
+      else if(mine){ cls += ' bad'; tail = '✗'; }
+      else { cls += ' reveal'; }
+    }else if(S.pending.indexOf(o.key) >= 0){
+      cls += ' sel';
+      tail = '✓';
+    }
+    var zh = (showZh && o.textZh && o.textZh !== o.text) ? '<span class="ozh">' + esc(o.textZh) + '</span>' : '';
+    html += '<button class="' + cls + '" data-k="' + o.key + '"' + (answered ? ' disabled' : '') + '>' +
+            '<span class="badge">' + o.key + '</span>' +
+            '<span class="otext">' + esc(o.text) + zh + '</span>' +
+            '<span class="tail">' + tail + '</span></button>';
+  }
+  html += '</div>';
+
+  html += '<div class="fbwrap">';
+  if(answered){
+    html += '<div class="fb show ' + (rec.correct ? 'ok' : 'bad') + '"><div class="fbt"><b>' +
+            (rec.correct ? '✓ 正确' : '✗ 错误') + '</b><span>答案 ' + q.answer.join('') + '</span></div>' +
+            '<p>' + esc(q.why) + '</p></div>';
+  }
+  html += '</div>';
+
+  html += '<div class="act"><button class="ghost" id="btnPrev"' + (S.idx === 0 ? ' disabled' : '') + '>上一题</button>' +
+          '<span class="flex"></span>' +
+          '<button class="primary" id="btnMain">' + (answered ? '下一题' : (q.type === 'multi' ? '提交' : '下一题')) + '</button>' +
+          '</div>';
+  html += '</div>';
+  col.innerHTML = html;
+
+  document.getElementById('railSide').style.width = pctSide + '%';
+
+  var bs = document.getElementById('btnStar');
+  if(bs) bs.onclick = toggleStar;
+  var bp = document.getElementById('btnPrev');
+  if(bp) bp.onclick = prev;
+  var bm = document.getElementById('btnMain');
+  if(bm){
+    bm.disabled = (!answered && q.type === 'multi' && !S.pending.length);
+    bm.onclick = function(){
+      if(answered) return next();
+      if(q.type === 'multi'){ if(S.pending.length) submit(S.pending.slice()); }
+      else next();
+    };
+  }
+  var opts = col.querySelectorAll('.opt');
+  for(var k=0;k<opts.length;k++){
+    (function(el){
+      el.onclick = function(){
+        if(answered) return;
+        var key = el.getAttribute('data-k');
+        if(q.type === 'multi'){
+          var at = S.pending.indexOf(key);
+          if(at >= 0) S.pending.splice(at,1); else S.pending.push(key);
+          render();
+        }else{
+          submit([key]);
+        }
+      };
+    })(opts[k]);
+  }
+}
+
+/* ---------- 交互 ---------- */
+function submit(picked){
+  var q = cur(); if(!q) return;
+  var ok = picked.length === q.answer.length;
+  if(ok){ for(var i=0;i<picked.length;i++){ if(q.answer.indexOf(picked[i]) < 0){ ok = false; break; } } }
+  S.answered[q.id] = { picked: picked, correct: ok, at: Date.now() };
+  S.pending = [];
+  save();
+  render();
+  if(ok && S.autoNext) setTimeout(next, 520);
+}
+function next(){ if(S.idx < S.queue.length - 1){ S.idx++; S.pending = []; save(); render(); } }
+function prev(){ if(S.idx > 0){ S.idx--; S.pending = []; save(); render(); } }
+function toggleStar(){
+  var q = cur(); if(!q) return;
+  if(S.starred[q.id]) delete S.starred[q.id]; else S.starred[q.id] = 1;
+  save(); render();
+}
+function doReset(){
+  S.src='all'; S.ch=[]; S.kind='all'; S.onlyWrong=false;
+  buildQueue(false); save(true); render();
+}
+
+/* ---------- 主题 ---------- */
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  try{ localStorage.setItem('os_theme', t); }catch(e){}
+  document.getElementById('btnTheme').textContent = t === 'dark' ? '☀' : '☾';
+}
+function initTheme(){
+  var t = null;
+  try{ t = localStorage.getItem('os_theme'); }catch(e){}
+  if(!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  setTheme(t);
+}
+
+/* ---------- 键盘 ---------- */
+document.addEventListener('keydown', function(e){
+  var k = e.key;
+  if((e.ctrlKey || e.metaKey) && (k === ',' || e.code === 'Comma')){ e.preventDefault(); return toggleSide(); }
+  var tag = (e.target && e.target.tagName) || '';
+  if(tag === 'INPUT' || tag === 'TEXTAREA') return;
+  if(k === 'ArrowLeft'){ e.preventDefault(); return prev(); }
+  if(k === 'ArrowRight'){ e.preventDefault(); return next(); }
+  if(k === 'Enter'){
+    e.preventDefault();
+    var q = cur(); if(!q) return;
+    if(!S.answered[q.id] && q.type === 'multi'){ if(S.pending.length) submit(S.pending.slice()); return; }
+    return next();
+  }
+  if(e.ctrlKey || e.metaKey || e.altKey) return;
+  var low = k.toLowerCase();
+  if(low === 'q'){ S.bi = !S.bi; save(); render(); return; }
+  if(low === 'w'){ S.random = !S.random; buildQueue(false); save(); render(); return; }
+  if(low === 'e'){ S.onlyWrong = !S.onlyWrong; buildQueue(false); save(); render(); return; }
+  if(low === 'r'){ toggleStar(); return; }
+  var n = parseInt(k, 10);
+  if(n >= 1 && n <= 9){
+    var el = document.querySelector('.opt[data-k="' + String.fromCharCode(64 + n) + '"]');
+    if(el && !el.disabled) el.click();
+  }
+});
+
+function toggleSide(){
+  var s = document.getElementById('side');
+  var sh = document.querySelector('.shell');
+  var on = !s.classList.contains('collapsed');
+  s.classList.toggle('collapsed', on);
+  sh.classList.toggle('collapsed', on);
+  var b = document.getElementById('btnCollapse');
+  b.textContent = on ? '›' : '‹';
+}
+
+/* ---------- 绑定 ---------- */
+document.getElementById('btnTheme').onclick = function(){
+  setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+};
+document.getElementById('btnCollapse').onclick = toggleSide;
+document.getElementById('btnMore').onclick = function(e){
+  e.stopPropagation();
+  document.getElementById('menu').classList.toggle('open');
+};
+document.addEventListener('click', function(){ document.getElementById('menu').classList.remove('open'); });
+document.getElementById('miClear').onclick = function(){
+  if(confirm('清空全部作答记录与收藏？')){
+    S.answered = {}; S.starred = {}; S.pending = [];
+    buildQueue(false); save(true); render();
+  }
+  document.getElementById('menu').classList.remove('open');
+};
+document.getElementById('miExport').onclick = function(){
+  var raw = localStorage.getItem(PK) || '{}';
+  var n = 0;
+  try{ n = Object.keys(JSON.parse(raw).answered || {}).length; }catch(e){}
+  var blob = new Blob([raw], { type:'application/json' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'osqb-progress-' + n + '.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  document.getElementById('menu').classList.remove('open');
+};
+document.getElementById('miImport').onclick = function(){
+  document.getElementById('miFile').click();
+  document.getElementById('menu').classList.remove('open');
+};
+document.getElementById('miFile').onchange = function(e){
+  var f = e.target.files && e.target.files[0];
+  if(!f) return;
+  var fr = new FileReader();
+  fr.onload = function(){
+    try{
+      var o = JSON.parse(fr.result);
+      if(!o || !o.answered) throw new Error('不是进度文件');
+      localStorage.setItem(PK, JSON.stringify(o));
+      alert('已导入 ' + Object.keys(o.answered).length + ' 条记录，页面将刷新');
+      location.reload();
+    }catch(err){ alert('导入失败：' + err.message); }
+  };
+  fr.readAsText(f);
+};
+document.getElementById('miReset').onclick = function(){
+  doReset();
+  document.getElementById('menu').classList.remove('open');
+};
+document.getElementById('btnReset').onclick = doReset;
+
+document.getElementById('swWrong').onchange = function(e){ S.onlyWrong = e.target.checked; buildQueue(false); save(); render(); };
+document.getElementById('swBi').onchange = function(e){ S.bi = e.target.checked; save(); render(); };
+document.getElementById('swRandom').onchange = function(e){ S.random = e.target.checked; buildQueue(false); save(); render(); };
+document.getElementById('swAuto').onchange = function(e){ S.autoNext = e.target.checked; save(); };
+
+/* ---------- 启动 ---------- */
+initTheme();
+load();
+document.getElementById('swWrong').checked = S.onlyWrong;
+document.getElementById('swBi').checked = S.bi;
+document.getElementById('swRandom').checked = S.random;
+document.getElementById('swAuto').checked = S.autoNext;
+buildQueue(true);
+if(S.idx >= S.queue.length) S.idx = 0;
+render();
+</script>
+
+<script>
+/* ================= 右侧 LLM 助手 ================= */
+(function(){
+  var CK = 'os_chat_cfg', LK = 'os_chat_log';
+  var DEF = { base:'http://127.0.0.1:3425/v1', key:'', model:'', effort:'low' };
+  var cfg = { base:DEF.base, key:DEF.key, model:DEF.model, effort:DEF.effort };
+  var msgs = [];
+
+  var chat = document.getElementById('chat');
+  var list = document.getElementById('chList');
+  var input = document.getElementById('chInput');
+  var sendBtn = document.getElementById('chSend');
+  var setBox = document.getElementById('chSetBox');
+
+  try{
+    var c = JSON.parse(localStorage.getItem(CK) || 'null');
+    if(c){ cfg.base = c.base || DEF.base; cfg.key = c.key || DEF.key; cfg.model = c.model || DEF.model; cfg.effort = (c.effort === undefined ? DEF.effort : c.effort); }
+  }catch(e){}
+  try{
+    var l = JSON.parse(localStorage.getItem(LK) || 'null');
+    if(l && l.length) msgs = l;
+  }catch(e){}
+
+  document.getElementById('cfBase').value = cfg.base;
+  document.getElementById('cfKey').value = cfg.key;
+  document.getElementById('cfModel').value = cfg.model;
+  document.getElementById('cfEffort').value = cfg.effort;
+
+  function saveCfg(){
+    cfg.base = document.getElementById('cfBase').value.trim() || DEF.base;
+    cfg.key = document.getElementById('cfKey').value.trim();
+    cfg.model = document.getElementById('cfModel').value.trim() || DEF.model;
+    cfg.effort = document.getElementById('cfEffort').value;
+    try{ localStorage.setItem(CK, JSON.stringify(cfg)); }catch(e){}
+    document.getElementById('cfNote').textContent = '已保存 · ' + cfg.model + (cfg.effort ? ' · ' + cfg.effort : '');
+  }
+  function saveLog(){
+    try{ localStorage.setItem(LK, JSON.stringify(msgs.slice(-40))); }catch(e){}
+  }
+
+  function add(role, text, err){
+    msgs.push({ role:role, text:text, err:!!err });
+    saveLog();
+    renderList();
+  }
+
+  function renderList(){
+    if(!msgs.length){
+      list.innerHTML = '<div class="ch-empty"><b>问点什么</b>Ctrl+/ 把当前题目丢进来<br>让它解释答案、举反例、或者出同类题</div>';
+      return;
+    }
+    var html = '';
+    for(var i = 0; i < msgs.length; i++){
+      var m = msgs[i];
+      html += '<div class="msg ' + (m.role === 'user' ? 'me' : 'ai') + (m.err ? ' err' : '') + '">' +
+              '<div class="who">' + (m.role === 'user' ? '我' : '助手') + '</div>' +
+              '<div class="b">' + (m.role === 'user' ? esc(m.text) : mdHTML(m.text)) + '</div></div>';
+    }
+    list.innerHTML = html;
+    list.scrollTop = list.scrollHeight;
+  }
+  function esc(t){
+    return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function inl(t){
+    return t
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+      .replace(/~~([^~]+)~~/g, '<del>$1</del>')
+      .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  }
+  function mdHTML(src){
+    var lines = String(src).split('\n');
+    var out = [], para = [], list = null, inCode = false, buf = [];
+    function flushP(){ if(para.length){ out.push('<p>' + para.join('<br>') + '</p>'); para = []; } }
+    function closeList(){ if(list){ out.push('</' + list + '>'); list = null; } }
+    for(var i = 0; i < lines.length; i++){
+      var raw = lines[i];
+      if(inCode){
+        if(/^\s*```/.test(raw)){ out.push('<pre><code>' + esc(buf.join('\n')) + '</code></pre>'); inCode = false; buf = []; }
+        else buf.push(raw);
+        continue;
+      }
+      if(/^\s*```/.test(raw)){ flushP(); closeList(); inCode = true; buf = []; continue; }
+      if(/^\s*$/.test(raw)){ flushP(); closeList(); continue; }
+      var m;
+      if(/^\s*\|.*\|\s*$/.test(raw) && i + 1 < lines.length && /^\s*\|[\s:\-|]+\|\s*$/.test(lines[i + 1])){
+        flushP(); closeList();
+        var cell = function(row){
+          return row.replace(/^\s*\|/, '').replace(/\|\s*$/, '').split('|').map(function(c){ return c.trim(); });
+        };
+        var head = cell(raw);
+        var tb = '<div class="tw"><table><thead><tr>';
+        for(var h = 0; h < head.length; h++) tb += '<th>' + inl(esc(head[h])) + '</th>';
+        tb += '</tr></thead><tbody>';
+        i += 2;
+        while(i < lines.length && /^\s*\|.*\|\s*$/.test(lines[i])){
+          var row = cell(lines[i]);
+          tb += '<tr>';
+          for(var c2 = 0; c2 < row.length; c2++) tb += '<td>' + inl(esc(row[c2])) + '</td>';
+          tb += '</tr>';
+          i++;
+        }
+        i--;
+        out.push(tb + '</tbody></table></div>');
+        continue;
+      }
+      if((m = raw.match(/^(#{1,4})\s+(.*)$/))){ flushP(); closeList(); var lv = Math.min(6, m[1].length + 2); out.push('<h' + lv + '>' + inl(esc(m[2])) + '</h' + lv + '>'); continue; }
+      if(/^\s*([-*_])[\s\-_*]{2,}$/.test(raw)){ flushP(); closeList(); out.push('<hr>'); continue; }
+      if((m = raw.match(/^\s*[-*+]\s+(.*)$/))){ flushP(); if(list !== 'ul'){ closeList(); out.push('<ul>'); list = 'ul'; } out.push('<li>' + inl(esc(m[1])) + '</li>'); continue; }
+      if((m = raw.match(/^\s*\d+[.)]\s+(.*)$/))){ flushP(); if(list !== 'ol'){ closeList(); out.push('<ol>'); list = 'ol'; } out.push('<li>' + inl(esc(m[1])) + '</li>'); continue; }
+      if((m = raw.match(/^\s*>\s?(.*)$/))){ flushP(); closeList(); out.push('<blockquote>' + inl(esc(m[1])) + '</blockquote>'); continue; }
+      closeList();
+      para.push(inl(esc(raw)));
+    }
+    if(inCode) out.push('<pre><code>' + esc(buf.join('\n')) + '</code></pre>');
+    flushP(); closeList();
+    return out.join('');
+  }
+
+
+  function endpoint(){
+    var u = cfg.base.replace(/\/+$/, '');
+    // 指向本地网关时统一走 题库服务.py 的代理（它带 CORS，file:// 也能调）
+    if(/^https?:\/\/127\.0\.0\.1:3425/.test(u)){
+      var proxy = (location.origin === 'http://127.0.0.1:8765') ? '' : 'http://127.0.0.1:8765';
+      return proxy + '/v1/chat/completions';
+    }
+    return u + '/chat/completions';
+  }
+
+  function busy(on){
+    sendBtn.disabled = on;
+    sendBtn.textContent = on ? '…' : '↑';
+  }
+
+  function send(){
+    var ef = document.getElementById('cfEffort');
+    if(ef) cfg.effort = ef.value;
+    var text = input.value.trim();
+    if(!text) return;
+    input.value = '';
+    input.style.height = 'auto';
+    add('user', text);
+    busy(true);
+
+    var payload = {
+      model: cfg.model,
+      temperature: 0.3,
+      max_tokens: 1600,
+      messages: [{ role:'system', content:'你是课程助教。学生贴题目时，先给出答案，再用中英文对照解释原因（英文术语在前、中文在后），控制在 200 字以内。不确定就说不确定，不要编。' }]
+    };
+    if(cfg.effort) payload.reasoning_effort = cfg.effort;
+    for(var i = 0; i < msgs.length; i++){
+      if(msgs[i].err) continue;
+      payload.messages.push({ role: msgs[i].role === 'user' ? 'user' : 'assistant', content: msgs[i].text });
+    }
+
+    function callModel(model){
+      var body = JSON.parse(JSON.stringify(payload));
+      body.model = model;
+      return fetch(endpoint(), {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json', 'Authorization':'Bearer ' + cfg.key },
+        body: JSON.stringify(body)
+      }).then(function(r){
+        return r.text().then(function(t){ return { ok:r.ok, status:r.status, body:t, model:model }; });
+      });
+    }
+
+    callModel(cfg.model).then(function(res){
+      // workbuddy/ 前缀可能被账号限制，自动换到 workbuddy-ai/ 同名模型重试一次
+      if(!res.ok && res.status === 403 && /^workbuddy\//.test(res.model)){
+        var alt = 'workbuddy-ai/' + res.model.slice(10);
+        return callModel(alt).then(function(r2){ r2.switched = alt; return r2; });
+      }
+      return res;
+    }).then(function(res){
+      if(!res.ok){
+        var m = res.body;
+        try{ m = JSON.parse(res.body).error.message || res.body; }catch(e){}
+        add('assistant', '请求失败 (' + res.status + ')：' + String(m).slice(0, 300), true);
+        return;
+      }
+      var d = JSON.parse(res.body);
+      var ch = d.choices && d.choices[0] && d.choices[0].message;
+      var txt = (ch && ch.content) || '';
+      if(!txt) txt = '（模型没有返回正文，可能是 reasoning 用尽了额度）';
+      if(res.switched){
+        txt = '（' + cfg.model + ' 被账号限制，已自动改用 ' + res.switched + '）\n\n' + txt;
+        cfg.model = res.switched;
+        try{ localStorage.setItem(CK, JSON.stringify(cfg)); }catch(e){}
+        var mf = document.getElementById('cfModel');
+        if(mf) mf.value = cfg.model;
+      }
+      add('assistant', txt);
+    }).catch(function(err){
+      add('assistant', '连不上：' + err.message + '\n\n' +
+        '请先运行同目录的 题库服务.py（只做代理），页面照旧双击打开即可。', true);
+    }).then(function(){ busy(false); });
+  }
+
+  sendBtn.onclick = send;
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); e.stopPropagation(); send(); return; }
+    // 其余按键继续冒泡，Ctrl+, / Ctrl+. 在输入框里也要能用
+  });
+  input.addEventListener('input', function(){
+    input.style.height = 'auto';
+    input.style.height = Math.min(120, input.scrollHeight) + 'px';
+  });
+
+  document.getElementById('chSet').onclick = function(){ setBox.classList.toggle('open'); };
+  document.getElementById('chClose').onclick = function(){ toggleChat(false); };
+  document.getElementById('cfEffort').onchange = function(){
+    cfg.effort = this.value;
+    try{ localStorage.setItem(CK, JSON.stringify(cfg)); }catch(e){}
+    document.getElementById('cfNote').textContent = '思考深度：' + (cfg.effort || '不传');
+  };
+  document.getElementById('cfSave').onclick = saveCfg;
+  document.getElementById('cfClear').onclick = function(){
+    msgs = []; saveLog(); renderList();
+    document.getElementById('cfNote').textContent = '对话已清空';
+  };
+
+  var lastDot = 0;
+  function toggleChat(on, focus){
+    var open = (on === undefined) ? !chat.classList.contains('open') : on;
+    chat.classList.toggle('open', open);
+    document.querySelector('.shell').classList.toggle('chat-open', open);
+    // 只有插入题目时才抢焦点；纯开关面板不抢，否则输入法会吃掉 Ctrl+.
+    if(open && focus) setTimeout(function(){ input.focus(); }, 200);
+  }
+
+  function insertQuestion(){
+    var q = (typeof cur === 'function') ? cur() : null;
+    if(!q){ return; }
+    var lines = ['题目：' + q.stem];
+    if(q.stemZh) lines.push('（中文：' + q.stemZh + '）');
+    for(var i = 0; i < q.options.length; i++){
+      lines.push(q.options[i].key + '. ' + q.options[i].text);
+    }
+    var rec = (typeof S !== 'undefined') ? S.answered[q.id] : null;
+    if(rec) lines.push('正确答案：' + q.answer.join('') + '。请解释为什么。');
+    var text = lines.join('\n');
+    toggleChat(true, true);
+    input.value = text;
+    input.style.height = 'auto';
+    input.style.height = Math.min(120, input.scrollHeight) + 'px';
+    input.focus();
+    input.setSelectionRange(text.length, text.length);
+  }
+
+  document.addEventListener('keydown', function(e){
+    var ctrl = e.ctrlKey || e.metaKey;
+    if(ctrl && (e.key === '.' || e.code === 'Period')){
+      e.preventDefault();
+      e.stopPropagation();
+      lastDot = Date.now();
+      toggleChat(undefined, false);
+      return;
+    }
+    if(ctrl && (e.key === '/' || e.code === 'Slash' || e.keyCode === 191)){
+      e.preventDefault();
+      e.stopPropagation();
+      insertQuestion();
+      return;
+    }
+    if(e.key === 'Escape' && chat.classList.contains('open')){
+      toggleChat(false);
+    }
+  }, true);
+
+  // 输入法占用 Ctrl+. 时 keydown 可能收不到，抬键再兜一次
+  document.addEventListener('keyup', function(e){
+    var ctrl = e.ctrlKey || e.metaKey;
+    if(!ctrl) return;
+    if(!(e.key === '.' || e.code === 'Period')) return;
+    if(Date.now() - lastDot < 250) return;
+    lastDot = Date.now();
+    toggleChat(undefined, false);
+  }, true);
+
+  renderList();
+})();
+</script>
+
+</body>
+</html>

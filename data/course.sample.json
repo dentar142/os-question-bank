@@ -1,0 +1,298 @@
+{
+  "meta": {
+    "course": "示例课程",
+    "subtitle": "题库演示",
+    "dailyGoal": 20,
+    "chapters": [
+      {
+        "id": 1,
+        "name": "示例第一章"
+      },
+      {
+        "id": 2,
+        "name": "示例第二章"
+      }
+    ],
+    "kinds": [
+      {
+        "key": "judge",
+        "label": "判断题",
+        "short": "判断"
+      },
+      {
+        "key": "single",
+        "label": "单选题",
+        "short": "单选"
+      },
+      {
+        "key": "multi",
+        "label": "多选题",
+        "short": "多选"
+      }
+    ],
+    "sources": [
+      {
+        "key": "real",
+        "label": "真题"
+      },
+      {
+        "key": "pred",
+        "label": "预测"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "s001",
+      "ch": 1,
+      "kind": "判断题",
+      "src": "real",
+      "q": "HTTP is a stateless protocol.",
+      "qzh": "HTTP 是无状态协议。",
+      "opts": [
+        [
+          "A",
+          "是",
+          "是"
+        ],
+        [
+          "B",
+          "非",
+          "非"
+        ]
+      ],
+      "ans": [
+        "A"
+      ],
+      "why": "HTTP 本身不保存请求之间的状态，状态要靠 Cookie / Session 等机制维持。"
+    },
+    {
+      "id": "s002",
+      "ch": 1,
+      "kind": "单选题",
+      "src": "real",
+      "q": "Which OSI layer is responsible for routing?",
+      "qzh": "OSI 模型中哪一层负责路由？",
+      "opts": [
+        [
+          "A",
+          "Physical layer",
+          "物理层"
+        ],
+        [
+          "B",
+          "Data link layer",
+          "数据链路层"
+        ],
+        [
+          "C",
+          "Network layer",
+          "网络层"
+        ],
+        [
+          "D",
+          "Transport layer",
+          "传输层"
+        ]
+      ],
+      "ans": [
+        "C"
+      ],
+      "why": "路由发生在网络层，依据 IP 地址选择下一跳。"
+    },
+    {
+      "id": "s003",
+      "ch": 1,
+      "kind": "多选题",
+      "src": "pred",
+      "q": "Which of the following are valid HTTP methods?",
+      "qzh": "下列哪些是合法的 HTTP 方法？",
+      "opts": [
+        [
+          "A",
+          "GET",
+          "GET"
+        ],
+        [
+          "B",
+          "POST",
+          "POST"
+        ],
+        [
+          "C",
+          "DELETE",
+          "DELETE"
+        ],
+        [
+          "D",
+          "ROUTE",
+          "ROUTE"
+        ]
+      ],
+      "ans": [
+        "A",
+        "B",
+        "C"
+      ],
+      "why": "GET / POST / DELETE 都是标准方法；ROUTE 不存在。"
+    },
+    {
+      "id": "s004",
+      "ch": 2,
+      "kind": "判断题",
+      "src": "real",
+      "q": "TCP preserves message boundaries.",
+      "qzh": "TCP 保留消息边界。",
+      "opts": [
+        [
+          "A",
+          "是",
+          "是"
+        ],
+        [
+          "B",
+          "非",
+          "非"
+        ]
+      ],
+      "ans": [
+        "B"
+      ],
+      "why": "TCP 是字节流，不保留消息边界，需要应用层自己切分；保留边界的是 UDP。"
+    },
+    {
+      "id": "s005",
+      "ch": 2,
+      "kind": "单选题",
+      "src": "real",
+      "q": "The binary number 1011 equals which decimal value?",
+      "qzh": "二进制 1011 对应的十进制值是？",
+      "opts": [
+        [
+          "A",
+          "9",
+          "9"
+        ],
+        [
+          "B",
+          "11",
+          "11"
+        ],
+        [
+          "C",
+          "13",
+          "13"
+        ],
+        [
+          "D",
+          "15",
+          "15"
+        ]
+      ],
+      "ans": [
+        "B"
+      ],
+      "why": "1×8 + 0×4 + 1×2 + 1×1 = 11。"
+    },
+    {
+      "id": "s006",
+      "ch": 2,
+      "kind": "多选题",
+      "src": "pred",
+      "q": "Which of the following are ACID properties?",
+      "qzh": "下列哪些属于 ACID 特性？",
+      "opts": [
+        [
+          "A",
+          "Atomicity",
+          "原子性"
+        ],
+        [
+          "B",
+          "Consistency",
+          "一致性"
+        ],
+        [
+          "C",
+          "Isolation",
+          "隔离性"
+        ],
+        [
+          "D",
+          "Durability",
+          "持久性"
+        ],
+        [
+          "E",
+          "Scalability",
+          "可扩展性"
+        ]
+      ],
+      "ans": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "why": "ACID 是原子性、一致性、隔离性、持久性；可扩展性不属于 ACID。"
+    },
+    {
+      "id": "s007",
+      "ch": 2,
+      "kind": "判断题",
+      "src": "real",
+      "q": "A stack follows the FIFO principle.",
+      "qzh": "栈遵循先进先出原则。",
+      "opts": [
+        [
+          "A",
+          "是",
+          "是"
+        ],
+        [
+          "B",
+          "非",
+          "非"
+        ]
+      ],
+      "ans": [
+        "B"
+      ],
+      "why": "栈是 LIFO（后进先出）；队列才是 FIFO。"
+    },
+    {
+      "id": "s008",
+      "ch": 1,
+      "kind": "单选题",
+      "src": "real",
+      "q": "What is the time complexity of binary search on a sorted array?",
+      "qzh": "在有序数组上做二分查找的时间复杂度是？",
+      "opts": [
+        [
+          "A",
+          "O(1)",
+          "O(1)"
+        ],
+        [
+          "B",
+          "O(log n)",
+          "O(log n)"
+        ],
+        [
+          "C",
+          "O(n)",
+          "O(n)"
+        ],
+        [
+          "D",
+          "O(n log n)",
+          "O(n log n)"
+        ]
+      ],
+      "ans": [
+        "B"
+      ],
+      "why": "每次比较排除一半元素，迭代次数为 log2(n)。"
+    }
+  ]
+}
