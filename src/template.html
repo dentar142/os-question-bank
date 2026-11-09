@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>__COURSE__ · 题库</title>
+<title>操作系统 · 题库</title>
 <style>
 *{box-sizing:border-box}
 :root{
@@ -135,6 +135,7 @@ button:focus-visible,.opt:focus-visible,input:focus-visible+ i .knob,label:focus
 .meta .sep{width:1px;height:10px;background:var(--border)}
 .meta .src{font-size:11.5px;color:var(--faint)}
 .meta .src.pred{color:var(--bad)}
+.meta .src.okmark{color:var(--ok)}
 .star{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--muted)}
 .star:hover{color:var(--ink2)}
 .star.on{color:var(--ink)}
@@ -259,6 +260,74 @@ button:focus-visible,.opt:focus-visible,input:focus-visible+ i .knob,label:focus
 .msg .b th{background:var(--surface2);font-weight:600;white-space:nowrap}
 .msg .b tbody tr:nth-child(even) td{background:rgba(128,128,128,.05)}
 
+/* ---------- 重练条 / 统计面板 / 轻提示 ---------- */
+.sess{display:none;align-items:center;gap:10px;margin:0 40px 12px;padding:8px 12px;border:1px solid var(--border);
+  background:var(--surface);border-radius:10px;font-size:12px;color:var(--ink2);flex:none}
+.sess.on{display:flex}
+.sess b{font-weight:600;color:var(--ink);letter-spacing:.01em}
+.sess span{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.sess .flex{flex:1}
+.sess button{font-size:11.5px;padding:4px 10px;border-radius:6px;border:1px solid var(--border);
+  background:var(--card);color:var(--ink2);transition:background var(--m-out)}
+.sess button:hover{background:var(--surface2)}
+
+.duo{display:flex;gap:6px;margin-top:2px}
+.duo button{flex:1;height:28px;border-radius:7px;border:1px solid var(--border);background:var(--card);
+  font-size:11.5px;color:var(--ink2);transition:background var(--m-out)}
+.duo button:hover{background:var(--surface2)}
+
+.stats3{cursor:pointer;border-radius:8px;transition:background var(--m-out)}
+.stats3:hover{background:var(--surface)}
+
+.ovl{position:fixed;inset:0;z-index:60;background:rgba(18,20,24,.34);display:none;
+  align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(2px)}
+.ovl.on{display:flex;animation:fadein 160ms ease}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.stats{width:620px;max-width:100%;max-height:86dvh;overflow:auto;background:var(--card);
+  border:1px solid var(--border);border-radius:var(--r-card);box-shadow:0 24px 60px rgba(0,0,0,.2);
+  animation:pop 220ms cubic-bezier(.16,1,.3,1)}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
+.stats-h{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;
+  border-bottom:1px solid var(--borderSoft);position:sticky;top:0;background:var(--card);z-index:1}
+.stats-h b{font-size:14px;font-weight:600}
+.stats-b{padding:18px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px}
+.kpi{background:var(--surface);border-radius:10px;padding:10px 12px}
+.kpi b{display:block;font-size:17px;font-weight:600;line-height:1.25;font-variant-numeric:tabular-nums}
+.kpi b i{font-style:normal;font-size:10.5px;font-weight:400;color:var(--faint)}
+.kpi span{font-size:10.5px;color:var(--muted)}
+.ssec{margin-bottom:20px}
+.ssec:last-child{margin-bottom:0}
+.shead{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px}
+.shead span{font-size:11.5px;font-weight:600;color:var(--ink2)}
+.shead i{font-style:normal;font-size:10px;color:var(--faint);font-variant-numeric:tabular-nums}
+.srow{display:flex;align-items:center;gap:10px;margin:8px 0}
+.sl{width:112px;flex:none;font-size:11.5px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sl i{font-style:normal;font-size:9.5px;color:var(--faint);margin-right:5px;font-variant-numeric:tabular-nums}
+.sbar{flex:1;height:7px;border-radius:4px;background:var(--surface2);overflow:hidden;display:flex}
+.sbar b{display:block;height:100%;transition:width 320ms cubic-bezier(.16,1,.3,1)}
+.sbar .ok{background:var(--ok)}
+.sbar .bad{background:var(--bad)}
+.sv{width:94px;flex:none;text-align:right;font-size:10px;color:var(--faint);font-variant-numeric:tabular-nums}
+.days{display:flex;align-items:flex-end;gap:6px;height:104px;padding-top:10px}
+.dcell{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:5px}
+.dcell b{display:block;width:12px;background:var(--solid);border-radius:2px 2px 1px 1px}
+.dcell span{font-size:8.5px;color:var(--faint);font-variant-numeric:tabular-nums;white-space:nowrap}
+.dcell:hover b{background:var(--bad)}
+
+.toast{position:fixed;left:50%;bottom:30px;z-index:80;background:var(--solid);color:var(--onSolid);
+  font-size:12px;padding:8px 14px;border-radius:8px;opacity:0;pointer-events:none;
+  transform:translate(-50%,10px);transition:opacity 180ms,transform 180ms}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:767px){
+  .sess{margin:0 20px 10px;flex-wrap:wrap}
+  .stats{max-height:92dvh}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .sl{width:88px}
+  .sv{width:80px}
+}
+
 /* ---------- 空态 ---------- */
 .empty{display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 0}
 .ebadge{width:44px;height:44px;border-radius:22px;background:var(--surface);display:flex;align-items:center;justify-content:center}
@@ -330,7 +399,7 @@ button:focus-visible,.opt:focus-visible,input:focus-visible+ i .knob,label:focus
     <div class="side-top">
       <div class="brand">
         <span class="mark"></span>
-        <span><span class="bname">__COURSE__</span><br><span class="bsub">期末复习</span></span>
+        <span><span class="bname">操作系统</span><br><span class="bsub">期末复习</span></span>
       </div>
       <button class="iconbtn" id="btnCollapse" aria-label="收起侧栏" title="收起侧栏 (Ctrl + .)">‹</button>
     </div>
@@ -359,13 +428,14 @@ button:focus-visible,.opt:focus-visible,input:focus-visible+ i .knob,label:focus
         <label class="sw"><span>中英对照</span><input type="checkbox" id="swBi" checked><i class="track"><b class="knob"></b></i></label>
         <label class="sw"><span>随机顺序</span><input type="checkbox" id="swRandom"><i class="track"><b class="knob"></b></i></label>
         <label class="sw"><span>答对自动下一题</span><input type="checkbox" id="swAuto"><i class="track"><b class="knob"></b></i></label>
+        <div class="duo"><button id="btnRetry">错题重练</button><button id="btnMix">打乱重练</button></div>
       </div>
     </div>
 
     <div class="side-foot">
       <div class="today"><span>今日练习</span><b id="todayN"></b></div>
       <div class="rail"><i id="railSide"></i></div>
-      <div class="stats3">
+      <div class="stats3" id="sideStats" title="查看学习统计">
         <div><b id="stDone">0</b><span>已答</span></div>
         <div><b id="stRate">--</b><span>正确率</span></div>
         <div><b id="stWrong">0</b><span>错题</span></div>
@@ -380,10 +450,13 @@ button:focus-visible,.opt:focus-visible,input:focus-visible+ i .knob,label:focus
       <span class="vline"></span>
       <span class="path" id="path">第 1 章 · 判断题</span>
       <span class="flex"></span>
-      <span class="keys">1–9 选择 · Enter 提交 · ← → 翻页 · Q 中英 · W 随机 · E 错题 · R 收藏 · Ctrl+/ 问 AI</span>
+      <span class="keys">1–9 选择 · Enter 提交 · ← → 翻页 · Q 中英 · W 随机 · E 错题 · T 重练 · S 统计 · R 收藏 · Ctrl+/ 问 AI</span>
       <button class="iconbtn" id="btnTheme" aria-label="切换主题">☾</button>
       <button class="iconbtn" id="btnMore" aria-label="更多">⋯</button>
       <div class="menu" id="menu">
+        <button id="miRetry">错题重练</button>
+        <button id="miMix">打乱重练</button>
+        <button id="miStats">学习统计</button>
         <button id="miExport">导出进度</button>
         <button id="miImport">导入进度</button>
         <button id="miClear">清空作答记录</button>
@@ -394,10 +467,26 @@ button:focus-visible,.opt:focus-visible,input:focus-visible+ i .knob,label:focus
 
     <div class="toolbar" id="toolbar"></div>
 
+    <div class="sess" id="sessBar">
+      <b id="sessName">错题重练</b>
+      <span id="sessMeta"></span>
+      <span class="flex"></span>
+      <button id="sessShuffle">重新打乱</button>
+      <button id="sessExit">退出重练</button>
+    </div>
+
     <main class="stage"><div class="col" id="col"></div></main>
     <div class="rail bottom"><i id="railMain"></i></div>
   </div>
 </div>
+
+<div class="ovl" id="statsWrap">
+  <div class="stats" role="dialog" aria-modal="true" aria-label="学习统计">
+    <div class="stats-h"><b>学习统计</b><button class="iconbtn" id="statsClose" aria-label="关闭">×</button></div>
+    <div class="stats-b" id="statsBody"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
 
 <aside id="chat">
   <div class="ch-head">
@@ -484,12 +573,14 @@ var KIND_LIST = (function(){
   return out;
 })();
 var SRC_LIST = META.sources;
-var PK = 'osqb.progress.v1';
+var PK = 'osqb.progress.v2:' + META.course;
+var PK0 = 'osqb.progress.v1';
 
 var S = {
   answered:{}, starred:{}, ch:[], src:'all', kind:'all',
   onlyWrong:false, bi:true, random:false, autoNext:false,
-  idx:0, queue:[], pending:[]
+  idx:0, queue:[], pending:[],
+  mastered:{}, log:[], sess:null
 };
 
 /* ---------- 持久化 ---------- */
@@ -497,7 +588,8 @@ var saveTimer = null;
 function save(now){
   if(saveTimer) clearTimeout(saveTimer);
   var write = function(){
-    var p = { version:1, answered:S.answered, starred:S.starred,
+    var p = { version:2, answered:S.answered, starred:S.starred,
+      mastered:S.mastered, log:S.log.slice(-3000),
       filters:{ src:S.src, ch:S.ch.slice(), kind:S.kind },
       flags:{ onlyWrong:S.onlyWrong, bi:S.bi, random:S.random, autoNext:S.autoNext },
       theme: document.documentElement.getAttribute('data-theme'),
@@ -509,6 +601,9 @@ function save(now){
 function load(){
   var p = null;
   try{ p = JSON.parse(localStorage.getItem(PK) || 'null'); }catch(e){}
+  if(!p){
+    try{ p = JSON.parse(localStorage.getItem(PK0) || 'null'); }catch(e){}
+  }
   if(!p){
     var old = null;
     try{ old = JSON.parse(localStorage.getItem('os_bank_v2') || 'null'); }catch(e){}
@@ -524,9 +619,22 @@ function load(){
   }
   S.answered = p.answered || {};
   S.starred = p.starred || {};
+  S.mastered = p.mastered || {};
+  S.log = p.log || [];
   if(p.filters){ S.src = p.filters.src || 'all'; S.ch = p.filters.ch || []; S.kind = p.filters.kind || 'all'; }
   if(p.flags){ S.onlyWrong = !!p.flags.onlyWrong; S.bi = p.flags.bi !== false; S.random = !!p.flags.random; S.autoNext = !!p.flags.autoNext; }
   S.idx = p.lastIndex || 0;
+}
+
+function pruneState(){
+  var ids = {}, i;
+  for(i = 0; i < Q.length; i++) ids[Q[i].id] = 1;
+  for(var k in S.answered){ if(!ids[k]) delete S.answered[k]; }
+  for(var s in S.starred){ if(!ids[s]) delete S.starred[s]; }
+  for(var m in S.mastered){ if(!ids[m]) delete S.mastered[m]; }
+  var log = [];
+  for(i = 0; i < S.log.length; i++){ if(ids[S.log[i].id]) log.push(S.log[i]); }
+  S.log = log;
 }
 
 /* ---------- 队列 ---------- */
@@ -534,7 +642,8 @@ function shuffle(a){
   for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
   return a;
 }
-function buildQueue(keep){
+function buildQueue(keep, keepSess){
+  if(!keepSess){ S.sess = null; S.pending = []; }
   var out = [];
   for(var i=0;i<Q.length;i++){
     var q = Q[i];
@@ -550,7 +659,59 @@ function buildQueue(keep){
   if(!keep) S.idx = 0;
   if(S.idx >= S.queue.length) S.idx = Math.max(0, S.queue.length - 1);
 }
-function cur(){ return S.queue[S.idx] || null; }
+function cur(){
+  if(S.sess) return sessQueue()[S.sess.idx] || null;
+  return S.queue[S.idx] || null;
+}
+function sessQueue(){
+  if(!S.sess) return [];
+  var map = {}, out = [];
+  for(var i = 0; i < Q.length; i++) map[Q[i].id] = Q[i];
+  for(var j = 0; j < S.sess.ids.length; j++){ if(map[S.sess.ids[j]]) out.push(map[S.sess.ids[j]]); }
+  return out;
+}
+
+/* ---------- 重练会话 ---------- */
+function isWrongId(id){
+  var a = S.answered[id];
+  return !!(a && !a.correct && !S.mastered[id]);
+}
+function wrongIds(){
+  var out = [];
+  for(var i = 0; i < Q.length; i++){ if(isWrongId(Q[i].id)) out.push(Q[i].id); }
+  return out;
+}
+function startSess(mode){
+  var ids = [];
+  if(mode === 'retry'){
+    ids = wrongIds();
+    if(!ids.length){ toast('没有待重练的错题'); return; }
+  }else{
+    buildQueue(true);
+    for(var i = 0; i < S.queue.length; i++) ids.push(S.queue[i].id);
+    if(!ids.length){ toast('当前筛选下没有题目'); return; }
+    ids = shuffle(ids.slice());
+  }
+  S.sess = { mode:mode, ids:ids, res:{}, idx:0 };
+  S.pending = [];
+  save(true); render();
+  toast(mode === 'retry' ? '错题重练 · ' + ids.length + ' 题' : '打乱重练 · ' + ids.length + ' 题');
+}
+function shuffleSess(){
+  if(!S.sess) return;
+  S.sess.ids = shuffle(S.sess.ids.slice());
+  S.sess.res = {};
+  S.sess.idx = 0;
+  S.pending = [];
+  save(); render();
+  toast('已重新打乱，开始新一轮');
+}
+function endSess(quiet){
+  if(!S.sess) return;
+  S.sess = null; S.pending = [];
+  save(true); render();
+  if(!quiet) toast('已退出重练');
+}
 
 /* ---------- 统计 ---------- */
 function dayKey(ts){
@@ -564,14 +725,115 @@ function statsNow(){
   for(var k in S.answered){
     var a = S.answered[k];
     done++;
-    if(a.correct) right++; else wrong++;
-    if(dayKey(a.at) === tk) today++;
+    if(a.correct) right++; else if(!S.mastered[k]) wrong++;
   }
+  for(var i = 0; i < S.log.length; i++){ if(dayKey(S.log[i].t) === tk) today++; }
   return { done:done, right:right, wrong:wrong, today:today,
            rate: done ? Math.round(right*100/done) : 0 };
 }
 function padNum(n, width){ var t = String(n); while(t.length < width) t = '0' + t; return t; }
 function padIndex(n){ return padNum(n, Math.max(2, String(CHAPTERS.length).length)); }
+
+/* ---------- 统计面板 ---------- */
+var toastTimer = null;
+function toast(msg){
+  var el = document.getElementById('toast');
+  if(!el) return;
+  el.textContent = msg;
+  el.classList.add('on');
+  if(toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ el.classList.remove('on'); }, 1800);
+}
+function chapterRows(){
+  var out = [];
+  for(var c = 0; c < CHAPTERS.length; c++){
+    var cp = CHAPTERS[c], tot = 0, done = 0, right = 0;
+    for(var i = 0; i < Q.length; i++){
+      if(String(Q[i].ch) !== String(cp.id)) continue;
+      tot++;
+      var a = S.answered[Q[i].id];
+      if(a){ done++; if(a.correct) right++; }
+    }
+    out.push({ label: cp.name, tag: padIndex(c + 1), tot: tot, done: done, right: right });
+  }
+  return out;
+}
+function kindRows(){
+  var out = [];
+  for(var k = 0; k < KIND_LIST.length; k++){
+    var kd = KIND_LIST[k], tot = 0, done = 0, right = 0;
+    for(var i = 0; i < Q.length; i++){
+      if(Q[i].type !== kd.key) continue;
+      tot++;
+      var a = S.answered[Q[i].id];
+      if(a){ done++; if(a.correct) right++; }
+    }
+    out.push({ label: kd.label, tag: '', tot: tot, done: done, right: right });
+  }
+  return out;
+}
+function barRows(rows){
+  var h = '';
+  for(var i = 0; i < rows.length; i++){
+    var r = rows[i];
+    var okw = r.tot ? r.right / r.tot * 100 : 0;
+    var badw = r.tot ? (r.done - r.right) / r.tot * 100 : 0;
+    var rate = r.done ? Math.round(r.right * 100 / r.done) : 0;
+    h += '<div class="srow"><span class="sl">' + (r.tag ? '<i>' + r.tag + '</i>' : '') + esc(r.label) + '</span>' +
+      '<span class="sbar"><b class="ok" style="width:' + okw.toFixed(1) + '%"></b>' +
+      '<b class="bad" style="width:' + badw.toFixed(1) + '%"></b></span>' +
+      '<span class="sv">' + r.done + '/' + r.tot + ' · ' + (r.done ? rate + '%' : '--') + '</span></div>';
+  }
+  return h;
+}
+function recentDays(n){
+  var out = [], map = {};
+  var base = new Date(); base.setHours(0, 0, 0, 0);
+  for(var i = 0; i < n; i++){
+    var d = new Date(base.getTime() - (n - 1 - i) * 86400000);
+    var k = dayKey(d.getTime());
+    var cell = { key: k, n: 0 };
+    out.push(cell); map[k] = cell;
+  }
+  for(var j = 0; j < S.log.length; j++){
+    var e = S.log[j], hit = map[dayKey(e.t)];
+    if(hit) hit.n++;
+  }
+  return out;
+}
+function openStats(){
+  document.getElementById('statsBody').innerHTML = renderStats();
+  document.getElementById('statsWrap').classList.add('on');
+}
+function closeStats(){
+  document.getElementById('statsWrap').classList.remove('on');
+}
+function renderStats(){
+  var st = statsNow();
+  var mastered = 0;
+  for(var m in S.mastered) mastered++;
+  var days = recentDays(14), max = 1, sum = 0;
+  for(var i = 0; i < days.length; i++){ if(days[i].n > max) max = days[i].n; sum += days[i].n; }
+  var h = '<div class="kpis">' +
+    '<div class="kpi"><b>' + st.done + '<i> / ' + TOTAL + '</i></b><span>已答</span></div>' +
+    '<div class="kpi"><b>' + (st.done ? st.rate + '%' : '--') + '</b><span>正确率</span></div>' +
+    '<div class="kpi"><b>' + st.wrong + '</b><span>待重练</span></div>' +
+    '<div class="kpi"><b>' + mastered + '</b><span>已掌握</span></div></div>';
+  h += '<div class="ssec"><div class="shead"><span>章节</span><i>已答 / 总题 · 正确率</i></div>' +
+    barRows(chapterRows()) + '</div>';
+  h += '<div class="ssec"><div class="shead"><span>题型</span><i>已答 / 总题 · 正确率</i></div>' +
+    barRows(kindRows()) + '</div>';
+  h += '<div class="ssec"><div class="shead"><span>近 14 天</span><i>共 ' + sum +
+    ' 次作答</i></div><div class="days">';
+  for(var d = 0; d < days.length; d++){
+    var dd = days[d];
+    var hgt = dd.n ? Math.max(6, Math.round(dd.n / max * 74)) : 3;
+    h += '<div class="dcell" title="' + dd.key + ' · ' + dd.n + ' 题"><b style="height:' + hgt + 'px' +
+      (dd.n ? '' : ';opacity:.3') + '"></b><span>' + dd.key.slice(5).replace('-', '/') + '</span></div>';
+  }
+  h += '</div></div>';
+  return h;
+}
 
 /* ---------- 渲染：筛选 ---------- */
 function countBy(fn){ var n=0; for(var i=0;i<Q.length;i++) if(fn(Q[i])) n++; return n; }
@@ -646,16 +908,30 @@ function renderToolbar(){
 /* ---------- 渲染：题卡 ---------- */
 function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
+function renderSessBar(){
+  var bar = document.getElementById('sessBar');
+  if(!S.sess){ bar.classList.remove('on'); return; }
+  var done = 0, right = 0;
+  for(var k in S.sess.res){ done++; if(S.sess.res[k].correct) right++; }
+  document.getElementById('sessName').textContent = S.sess.mode === 'retry' ? '错题重练' : '打乱重练';
+  document.getElementById('sessMeta').textContent = '共 ' + S.sess.ids.length + ' 题 · 剩余 ' +
+    (S.sess.ids.length - done) + ' · 本轮答对 ' + right;
+  bar.classList.add('on');
+}
+
 function render(){
   renderFilters();
   renderToolbar();
+  renderSessBar();
 
   var col = document.getElementById('col');
   var q = cur();
   var st = statsNow();
+  var sIdx = S.sess ? S.sess.idx : S.idx;
+  var sLen = S.sess ? S.sess.ids.length : S.queue.length;
 
   document.getElementById('counter').textContent = q
-    ? (padNum(S.idx + 1, DIGITS) + ' / ' + S.queue.length)
+    ? (padNum(sIdx + 1, DIGITS) + ' / ' + sLen)
     : padNum(0, DIGITS) + ' / 0';
   document.getElementById('stDone').textContent = st.done;
   document.getElementById('stRate').textContent = st.done ? st.rate + '%' : '--';
@@ -666,6 +942,15 @@ function render(){
   document.getElementById('todayN').textContent = Math.min(st.today, META.dailyGoal) + ' / ' + META.dailyGoal;
 
   if(!q){
+    if(S.sess){
+      col.innerHTML = '<div class="empty"><div class="ebadge"><i class="pig"></i></div>' +
+        '<h3>本轮重练已经结束</h3><p>这一轮的题都过完了。看看统计，或者重新打乱再来一轮。</p>' +
+        '<button class="ghost" id="btnEmpty">退出重练</button></div>';
+      var be2 = document.getElementById('btnEmpty');
+      if(be2) be2.onclick = function(){ endSess(); };
+      document.getElementById('path').textContent = '重练 · 空';
+      return;
+    }
     col.innerHTML = '<div class="empty"><div class="ebadge"><i class="pig"></i></div>' +
       '<h3>' + (S.onlyWrong ? '错题已经清空了' : '这组筛选下没有题目了') + '</h3>' +
       '<p>' + (S.onlyWrong ? '换个条件继续，或者把筛选项重置。' : '当前筛选组合下没有匹配的题，试试放宽条件。') + '</p>' +
@@ -676,16 +961,19 @@ function render(){
     return;
   }
 
-  var rec = S.answered[q.id];
+  var rec = S.sess ? (S.sess.res[q.id] || null) : S.answered[q.id];
   var answered = !!rec;
   var showZh = S.bi;
+  var masteredNow = !!(S.sess && rec && rec.correct && S.mastered[q.id]);
 
-  document.getElementById('path').textContent = '第 ' + q.ch + ' 章 ' + (CHNAME[q.ch] || '') + ' · ' + q.kind;
+  document.getElementById('path').textContent = (S.sess ? '重练 · ' : '') +
+    '第 ' + q.ch + ' 章 ' + (CHNAME[q.ch] || '') + ' · ' + q.kind;
 
   var html = '';
   html += '<div class="card">';
   html += '<div class="meta"><span class="kind">' + q.kind + '</span><span class="sep"></span>' +
           '<span class="src ' + (q.src === 'pred' ? 'pred' : '') + '">' + (q.src === 'pred' ? '预测题' : '真题') + '</span>' +
+          (S.mastered[q.id] ? '<span class="src okmark">已掌握</span>' : '') +
           '<span class="flex"></span>' +
           '<button class="star' + (S.starred[q.id] ? ' on' : '') + '" id="btnStar">' +
           (S.starred[q.id] ? '★' : '☆') + '<span>收藏</span></button></div>';
@@ -719,12 +1007,12 @@ function render(){
   html += '<div class="fbwrap">';
   if(answered){
     html += '<div class="fb show ' + (rec.correct ? 'ok' : 'bad') + '"><div class="fbt"><b>' +
-            (rec.correct ? '✓ 正确' : '✗ 错误') + '</b><span>答案 ' + q.answer.join('') + '</span></div>' +
+            (rec.correct ? (masteredNow ? '✓ 正确 · 已掌握' : '✓ 正确') : '✗ 错误') + '</b><span>答案 ' + q.answer.join('') + '</span></div>' +
             '<p>' + esc(q.why) + '</p></div>';
   }
   html += '</div>';
 
-  html += '<div class="act"><button class="ghost" id="btnPrev"' + (S.idx === 0 ? ' disabled' : '') + '>上一题</button>' +
+  html += '<div class="act"><button class="ghost" id="btnPrev"' + (sIdx === 0 ? ' disabled' : '') + '>上一题</button>' +
           '<span class="flex"></span>' +
           '<button class="primary" id="btnMain">' + (answered ? '下一题' : (q.type === 'multi' ? '提交' : '下一题')) + '</button>' +
           '</div>';
@@ -769,14 +1057,42 @@ function submit(picked){
   var q = cur(); if(!q) return;
   var ok = picked.length === q.answer.length;
   if(ok){ for(var i=0;i<picked.length;i++){ if(q.answer.indexOf(picked[i]) < 0){ ok = false; break; } } }
-  S.answered[q.id] = { picked: picked, correct: ok, at: Date.now() };
+  var now = Date.now();
+  if(S.sess){
+    S.sess.res[q.id] = { picked: picked.slice(), correct: ok, at: now };
+    var pre = S.answered[q.id];
+    if(!pre){
+      S.answered[q.id] = { picked: picked.slice(), correct: ok, at: now };
+    }else if(ok && !pre.correct){
+      S.mastered[q.id] = now;
+      S.answered[q.id] = { picked: picked.slice(), correct: true, at: now, fixed: true, prev: pre.picked || [] };
+      toast('已掌握，移出错题池');
+    }
+  }else{
+    S.answered[q.id] = { picked: picked.slice(), correct: ok, at: now };
+  }
+  S.log.push({ t: now, ok: ok ? 1 : 0, id: q.id, s: S.sess ? 1 : 0 });
+  if(S.log.length > 3000) S.log = S.log.slice(-3000);
   S.pending = [];
   save();
   render();
   if(ok && S.autoNext) setTimeout(next, 520);
 }
-function next(){ if(S.idx < S.queue.length - 1){ S.idx++; S.pending = []; save(); render(); } }
-function prev(){ if(S.idx > 0){ S.idx--; S.pending = []; save(); render(); } }
+function next(){
+  if(S.sess){
+    if(S.sess.idx < S.sess.ids.length - 1){ S.sess.idx++; S.pending = []; save(); render(); }
+    else toast('本轮最后一题了');
+    return;
+  }
+  if(S.idx < S.queue.length - 1){ S.idx++; S.pending = []; save(); render(); }
+}
+function prev(){
+  if(S.sess){
+    if(S.sess.idx > 0){ S.sess.idx--; S.pending = []; save(); render(); }
+    return;
+  }
+  if(S.idx > 0){ S.idx--; S.pending = []; save(); render(); }
+}
 function toggleStar(){
   var q = cur(); if(!q) return;
   if(S.starred[q.id]) delete S.starred[q.id]; else S.starred[q.id] = 1;
@@ -803,6 +1119,7 @@ function initTheme(){
 /* ---------- 键盘 ---------- */
 document.addEventListener('keydown', function(e){
   var k = e.key;
+  if(k === 'Escape' && document.getElementById('statsWrap').classList.contains('on')){ closeStats(); return; }
   if((e.ctrlKey || e.metaKey) && (k === ',' || e.code === 'Comma')){ e.preventDefault(); return toggleSide(); }
   var tag = (e.target && e.target.tagName) || '';
   if(tag === 'INPUT' || tag === 'TEXTAREA') return;
@@ -819,6 +1136,8 @@ document.addEventListener('keydown', function(e){
   if(low === 'q'){ S.bi = !S.bi; save(); render(); return; }
   if(low === 'w'){ S.random = !S.random; buildQueue(false); save(); render(); return; }
   if(low === 'e'){ S.onlyWrong = !S.onlyWrong; buildQueue(false); save(); render(); return; }
+  if(low === 't'){ S.sess ? endSess() : startSess('retry'); return; }
+  if(low === 's'){ openStats(); return; }
   if(low === 'r'){ toggleStar(); return; }
   var n = parseInt(k, 10);
   if(n >= 1 && n <= 9){
@@ -848,8 +1167,8 @@ document.getElementById('btnMore').onclick = function(e){
 };
 document.addEventListener('click', function(){ document.getElementById('menu').classList.remove('open'); });
 document.getElementById('miClear').onclick = function(){
-  if(confirm('清空全部作答记录与收藏？')){
-    S.answered = {}; S.starred = {}; S.pending = [];
+  if(confirm('清空全部作答记录、掌握标记与收藏？')){
+    S.answered = {}; S.starred = {}; S.mastered = {}; S.log = []; S.pending = [];
     buildQueue(false); save(true); render();
   }
   document.getElementById('menu').classList.remove('open');
@@ -890,20 +1209,55 @@ document.getElementById('miReset').onclick = function(){
 };
 document.getElementById('btnReset').onclick = doReset;
 
+document.getElementById('btnRetry').onclick = function(){
+  if(S.sess && S.sess.mode === 'retry') endSess(); else startSess('retry');
+};
+document.getElementById('btnMix').onclick = function(){ startSess('mix'); };
+document.getElementById('miRetry').onclick = function(){
+  startSess('retry');
+  document.getElementById('menu').classList.remove('open');
+};
+document.getElementById('miMix').onclick = function(){
+  startSess('mix');
+  document.getElementById('menu').classList.remove('open');
+};
+document.getElementById('miStats').onclick = function(){
+  openStats();
+  document.getElementById('menu').classList.remove('open');
+};
+document.getElementById('sessShuffle').onclick = shuffleSess;
+document.getElementById('sessExit').onclick = function(){ endSess(); };
+document.getElementById('statsClose').onclick = closeStats;
+document.getElementById('statsWrap').addEventListener('click', function(e){
+  if(e.target === this) closeStats();
+});
+document.getElementById('sideStats').onclick = openStats;
+
 document.getElementById('swWrong').onchange = function(e){ S.onlyWrong = e.target.checked; buildQueue(false); save(); render(); };
 document.getElementById('swBi').onchange = function(e){ S.bi = e.target.checked; save(); render(); };
 document.getElementById('swRandom').onchange = function(e){ S.random = e.target.checked; buildQueue(false); save(); render(); };
 document.getElementById('swAuto').onchange = function(e){ S.autoNext = e.target.checked; save(); };
 
 /* ---------- 启动 ---------- */
+function migrateLog(){
+  if(S.log.length) return;
+  for(var k in S.answered){
+    var a = S.answered[k];
+    S.log.push({ t:a.at || Date.now(), ok:a.correct ? 1 : 0, id:k, s:0 });
+  }
+  S.log.sort(function(x, y){ return x.t - y.t; });
+}
 initTheme();
 load();
+pruneState();
+migrateLog();
 document.getElementById('swWrong').checked = S.onlyWrong;
 document.getElementById('swBi').checked = S.bi;
 document.getElementById('swRandom').checked = S.random;
 document.getElementById('swAuto').checked = S.autoNext;
-buildQueue(true);
+buildQueue(true, true);
 if(S.idx >= S.queue.length) S.idx = 0;
+if(S.sess && S.sess.idx >= S.sess.ids.length) S.sess.idx = 0;
 render();
 </script>
 
