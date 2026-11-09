@@ -76,6 +76,10 @@
 
 模型带 thinking 时建议把「思考深度」设成 low，否则容易把 token 烧在推理上、正文返回空。
 
+## 交给 AI 部署
+
+想让 AI agent 直接把这套东西跑起来，用 docs/deploy-prompt.md 里那段提示词。
+
 ## 许可
 
 代码 MIT。空状态图标使用 Google Noto Emoji（Apache-2.0 / OFL），已内联为 data URI。未包含任何第三方 JS 库。
